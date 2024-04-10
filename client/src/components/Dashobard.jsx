@@ -1,10 +1,17 @@
 import React from 'react'
+import {Layout} from 'antd'
 
+
+const {Sider , Header ,Content} = Layout;
 const Dashobard = () => {
   return (
-    <div>
-      
-    </div>
+    <Layout>
+        <Sider></Sider>
+            <Layout>
+                <Header></Header>
+                <Content></Content>
+            </Layout>
+    </Layout>
   )
 }
 
