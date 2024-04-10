@@ -6,7 +6,7 @@ const {Sider , Header ,Content} = Layout;
 const Dashobard = () => {
   return (
     <Layout>
-        <Sider></Sider>
+        <Sider theme='light' trigger={null} collapsible collapsed={collapsed}className='slider'></Sider>
             <Layout>
                 <Header></Header>
                 <Content></Content>
