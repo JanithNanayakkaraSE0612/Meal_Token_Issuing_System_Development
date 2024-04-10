@@ -1,0 +1,2 @@
+# Meal_Token_Issuing_System_Development
+ project focused on the development of a Meal Token Issuing System for EatoToken, aimed at streamlining meal orders and digital token issuance. This is a crucial component of our innovative service, designed to enhance the dining experience for users.Designing a user-friendly interface using React, ViteJS, and Ant Design. Developing the backend with NestJS, incorporating PostgreSQL and TypeORM. Implementing CRUD operations for the Item entity, and Create and View functionalities for Meals. Integrating Firebase for image uploads.
