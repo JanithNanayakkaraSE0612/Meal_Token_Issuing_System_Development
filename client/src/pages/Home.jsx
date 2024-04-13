@@ -1,10 +1,10 @@
 import React from 'react'
-import Dashobard from '../components/Dashobard'
+import ItemList from '../components/ItemList'
 
 const Home = () => {
   return (
     <div>
-      <Dashobard/>
+      <ItemList/>
     </div>
   )
 }
