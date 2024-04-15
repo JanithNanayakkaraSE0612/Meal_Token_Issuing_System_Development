@@ -94,10 +94,3 @@ const ItemList = () => {
 }
 
 export default ItemList
- <Table
-    columns={columns}
-    dataSource={data}
-    scroll={{
-      x: 1300,
-    }}
-  />
