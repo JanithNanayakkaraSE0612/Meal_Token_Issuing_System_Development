@@ -4,81 +4,76 @@ import { Col, Row } from 'antd';
 
 const columns = [
   {
-    title: 'Full Name',
+    title: 'ID',
     width: 100,
     dataIndex: 'name',
     key: 'name',
     fixed: 'left',
   },
   {
-    title: 'Age',
-    width: 100,
+    title: 'Name',
+    width: 300,
     dataIndex: 'age',
     key: 'age',
     fixed: 'left',
     sorter: true,
   },
   {
-    title: 'Column 1',
+    title: 'Price',
+    width:200,
     dataIndex: 'address',
     key: '1',
   },
   {
-    title: 'Column 2',
+    title: 'Photo',
     dataIndex: 'address',
     key: '2',
-  },
-  {
-    title: 'Column 3',
-    dataIndex: 'address',
-    key: '3',
-  },
-  {
-    title: 'Column 4',
-    dataIndex: 'address',
-    key: '4',
-  },
-  {
-    title: 'Column 5',
-    dataIndex: 'address',
-    key: '5',
-  },
-  {
-    title: 'Column 6',
-    dataIndex: 'address',
-    key: '6',
-  },
-  {
-    title: 'Column 7',
-    dataIndex: 'address',
-    key: '7',
-  },
-  {
-    title: 'Column 8',
-    dataIndex: 'address',
-    key: '8',
   },
   {
     title: 'Action',
     key: 'operation',
     fixed: 'right',
-    width: 100,
+    width: 200,
     render: () => <a>action</a>,
   },
 ];
 const data = [
   {
     key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York Park',
+    name: '001',
+    age: 'Vegetable Fried Rice',
+    address: '700',
   },
   {
     key: '2',
-    name: 'Jim Green',
-    age: 40,
-    address: 'London Park',
+    name: '002',
+    age: 'Chicken Fried Rice',
+    address: '950',
   },
+  {
+    key: '3',
+    name: '003',
+    age: 'Egg Fried Rice',
+    address: '800',
+  },
+  {
+    key: '4',
+    name: '004',
+    age: 'Mix Fried Rice',
+    address: '1400',
+  },
+  {
+    key: '5',
+    name: '005',
+    age: 'Chicken Kottu',
+    address: '950',
+  },
+  {
+    key: '6',
+    name: '006',
+    age: 'Chicken Noodles',
+    address: '950',
+  }
 ];
 
 const ItemList = () => {
