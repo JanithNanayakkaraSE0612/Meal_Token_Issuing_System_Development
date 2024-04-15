@@ -1,5 +1,7 @@
 import React from 'react'
 import { Table } from 'antd';
+import { Col, Row } from 'antd';
+
 const columns = [
   {
     title: 'Full Name',
@@ -81,15 +83,23 @@ const data = [
 
 const ItemList = () => {
   return (
-    <div>
-       <Table
+    <Row>
+    <Col span={18} push={6}>
+    <Table
     columns={columns}
     dataSource={data}
     scroll={{
       x: 1300,
     }}
   />
-    </div>
+    </Col>
+    <Col span={6} pull={18}>
+  
+    </Col>
+  </Row>
+
+     
+   
   )
 }
 
