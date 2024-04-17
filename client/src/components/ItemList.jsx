@@ -78,12 +78,7 @@ const data = [
 
 const ItemList = () => {
   return (
-    <Row>
-    <Row>
-    <Col span={8}>col-8</Col>
-    <Col span={8}>col-8</Col>
-    <Col span={8}>col-8</Col>
-  </Row>
+    <div  className='bg-light'>
     <Row>
     <Col span={18} push={6}>
     <Table
@@ -98,8 +93,8 @@ const ItemList = () => {
   
     </Col>
   </Row>
-  </Row>
-     
+  
+  </div>
    
   )
 }

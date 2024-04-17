@@ -3,7 +3,7 @@ import ItemList from '../components/ItemList'
 
 const Home = () => {
   return (
-    <div>
+    <div className='bg-light '>
       <ItemList/>
     </div>
   )
