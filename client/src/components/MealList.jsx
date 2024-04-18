@@ -1,12 +1,31 @@
 import React from 'react'
+import '../App.css'
 import { Card, Col, Row } from 'antd';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import { Avatar} from 'antd';
+import { Flex, Layout } from 'antd';
+const { Sider, Content } = Layout;
 const { Meta } = Card;
+const contentStyle = {
+    textAlign: 'center',
+    minHeight: 120,
+    lineHeight: '120px',
+    color: '#fff',
+    backgroundColor: 'white',
+  };
+  const siderStyle = {
+    textAlign: 'center',
+    lineHeight: '120px',
+    color: '#fff',
+    backgroundColor: 'white',
+  };
+
 const MealList = () => {
   return (
 
-    <Row gutter={16}>
+    <div className='MealList'>
+      <Content style={contentStyle}>
+      <Row gutter={16}>
     <Col span={8}>
     <Card
     style={{
@@ -80,8 +99,16 @@ const MealList = () => {
   </Card>
     </Col>
   </Row>
+      </Content>
+      <Sider width="25%" style={siderStyle}>
+        Sider
+      </Sider>
+    
    
-  )
+
+  
+      </div>
+  );
 }
 
 export default MealList

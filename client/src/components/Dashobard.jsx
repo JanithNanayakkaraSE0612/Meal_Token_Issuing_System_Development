@@ -1,57 +1,84 @@
-import React from 'react'import {Flex, Menu} from "antd";
-import {FaLeaf} from "react-icons/fa6";
-import {UserOutlined, ProfileOutlined, LogoutOutlined, OrderedListOutlined, CarryOutOutlined, SettingOutlined,}from '@ant-design/icons';
+import React, { useState } from 'react';
+import {
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+  UploadOutlined,
+  UserOutlined,
+  VideoCameraOutlined,
+} from '@ant-design/icons';
+import { Button, Layout, Menu, theme } from 'antd';
+import ItemList from './ItemList';
+const { Header, Sider, Content } = Layout;
 
 
 const Dashobard = () => {
-  return (
-    <>
-    <Flex align="center" justify="center" >
-        <div className="logo">
-            <a>Dashboard</a>
-            <FaLeaf/>
-        </div>
-    </Flex>
-
-      <Menu
-        mode="inline"
-        defaultSelectedKeys={['1']}
-        className="menu-bar"
-        items={[
-            {
+  
+    const [collapsed, setCollapsed] = useState(false);
+    const {
+      token: { colorBgContainer, borderRadiusLG },
+    } = theme.useToken();
+    return (
+      <Layout>
+        <Sider trigger={null} collapsible collapsed={collapsed}>
+          <div className="demo-logo-vertical" />
+          <Menu
+            theme="dark"
+            mode="inline"
+            defaultSelectedKeys={['1']}
+            items={[
+              {
                 key: '1',
                 icon: <UserOutlined />,
-                label: 'Home',
-            },
-            {
+                label: 'nav 1',
+              },
+              {
                 key: '2',
-                icon: <CarryOutOutlined />,
-                label: 'Item',
-            },
-            {
+                icon: <VideoCameraOutlined />,
+                label: 'nav 2',
+              },
+              {
                 key: '3',
-                icon: <OrderedListOutlined />,
-                label: 'Meal',
-            },
-            {
-                key: '4',
-                icon: <ProfileOutlined />,
-                label: 'Order',
-            },
-            {
-                key: '5',
-                icon: <SettingOutlined />,
-                label: 'Setting',
-            },
-            {
-                key: '6',
-                icon: <LogoutOutlined />,
-                label: 'Logout',
-            },
-          ]}
-    />
-  </>
+                icon: <UploadOutlined />,
+                label: 'nav 3',
+              },
+            ]}
+          />
+        </Sider>
+        <Layout>
+          <Header
+            style={{
+              padding: 0,
+              background: colorBgContainer,
+            }}
+          >
+            <Button
+              type="text"
+              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+              onClick={() => setCollapsed(!collapsed)}
+              style={{
+                fontSize: '16px',
+                width: 64,
+                height: 64,
+              }}
+            />
+          </Header>
+          <Content
+            style={{
+              margin: '24px 16px',
+              padding: 24,
+              minHeight: 280,
+              background: colorBgContainer,
+              borderRadius: borderRadiusLG,
+            }}
+          >
+            {/* <ItemList/> */}
+          </Content>
+        </Layout>
+      </Layout>
   )
 }
 
 export default Dashobard
+
+
+
