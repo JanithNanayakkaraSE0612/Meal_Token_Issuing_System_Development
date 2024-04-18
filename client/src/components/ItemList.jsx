@@ -1,4 +1,5 @@
 import React from 'react'
+import '../App.css'
 import { Space, Table, Tag } from 'antd';
 import {  Layout } from 'antd'; // Assuming Flex is a component from 'antd' library
 const { Header, Footer, Sider, Content } = Layout;
@@ -81,6 +82,20 @@ const data = [
     address: '1400',
     tags: ['MixRice.jpg'],
   },
+  {
+    key: '5',
+    name: '005',
+    age: 'Chicken Kottu',
+    address: '950',
+    tags: ['Chicken.jpg'],
+  },
+  {
+    key: '6',
+    name: '006',
+    age: 'Chicken Noodles',
+    address: '950',
+    tags: ['Noodles.jpg'],
+  }
 ];
 const contentStyle = {
   textAlign: 'center',
@@ -92,9 +107,9 @@ const contentStyle = {
 
 const ItemList = () => {
   return (
-    <Content style={contentStyle}>
+    <Content className='ItemList' style={contentStyle}>
         <Flex gap="small" wrap="wrap">
-    <Button type="primary">Primary Button</Button>
+    <Button className='addItem'>Add New Item</Button>
   </Flex>
          <Table columns={columns} dataSource={data} />
     </Content>

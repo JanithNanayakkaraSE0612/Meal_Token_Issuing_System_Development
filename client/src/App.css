@@ -44,3 +44,19 @@
 .MealList{
   background-color: aliceblue;
 }
+
+
+.addItem{
+  background-color: #FEAF00;
+  color: black;
+  margin-left: 860px;
+  margin-top: 5px;
+}
+
+.addItem:hover{
+  background-color: #4a4948;
+}
+
+.ItemList{
+  width: 1000px;
+}

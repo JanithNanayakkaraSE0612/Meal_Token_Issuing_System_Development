@@ -6,8 +6,8 @@ import MealList from '../components/MealList'
 const Home = () => {
   return (
     <div className='bg-light '>
-      {/* <ItemList/> */}
-      <MealList/>
+      <ItemList/>
+      {/* <MealList/> */}
       
       
     </div>
