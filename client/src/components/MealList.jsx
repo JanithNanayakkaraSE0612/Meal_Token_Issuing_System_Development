@@ -1,5 +1,8 @@
 import React from 'react'
-
+import { Card, Col, Row } from 'antd';
+import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
+import { Avatar} from 'antd';
+const { Meta } = Card;
 const MealList = () => {
   return (
 
