@@ -1,40 +1,55 @@
 import React from 'react'
-import { Table } from 'antd';
-import { Col, Row } from 'antd';
+import { Space, Table, Tag } from 'antd';
+import {  Layout } from 'antd'; // Assuming Flex is a component from 'antd' library
+const { Header, Footer, Sider, Content } = Layout;
+import { Button, Flex } from 'antd';
 
 const columns = [
   {
     title: 'ID',
-    width: 100,
     dataIndex: 'name',
     key: 'name',
-    fixed: 'left',
+    render: (text) => <a>{text}</a>,
   },
   {
     title: 'Name',
-    width: 300,
     dataIndex: 'age',
     key: 'age',
-    fixed: 'left',
-    sorter: true,
   },
   {
     title: 'Price',
-    width:200,
     dataIndex: 'address',
-    key: '1',
+    key: 'address',
   },
   {
     title: 'Photo',
-    dataIndex: 'address',
-    key: '2',
+    key: 'tags',
+    dataIndex: 'tags',
+    render: (_, { tags }) => (
+      <>
+        {tags.map((tag) => {
+          let color = tag.length > 5 ? 'geekblue' : 'green';
+          if (tag === 'loser') {
+            color = 'volcano';
+          }
+          return (
+            <Tag color={color} key={tag}>
+              {tag.toUpperCase()}
+            </Tag>
+          );
+        })}
+      </>
+    ),
   },
   {
-    title: 'Action',
-    key: 'operation',
-    fixed: 'right',
-    width: 200,
-    render: () => <a>action</a>,
+    title: '',
+    key: 'action',
+    render: (_, record) => (
+      <Space size="middle">
+        <a>Edit</a>
+        <a>Delete</a>
+      </Space>
+    ),
   },
 ];
 const data = [
@@ -43,60 +58,46 @@ const data = [
     name: '001',
     age: 'Vegetable Fried Rice',
     address: '700',
+    tags: ['vegitale.jpg'],
   },
   {
     key: '2',
     name: '002',
     age: 'Chicken Fried Rice',
     address: '950',
+    tags: ['Chicken.jpg'],
   },
   {
     key: '3',
     name: '003',
     age: 'Egg Fried Rice',
     address: '800',
+    tags: ['Egg Rice.jpg'],
   },
   {
     key: '4',
     name: '004',
     age: 'Mix Fried Rice',
     address: '1400',
+    tags: ['MixRice.jpg'],
   },
-  {
-    key: '5',
-    name: '005',
-    age: 'Chicken Kottu',
-    address: '950',
-  },
-  {
-    key: '6',
-    name: '006',
-    age: 'Chicken Noodles',
-    address: '950',
-  }
 ];
+const contentStyle = {
+  textAlign: 'center',
+  minHeight: 120,
+  lineHeight: '1600px',
+  color: '#fff',
+  backgroundColor: 'white',
+};
 
 const ItemList = () => {
   return (
-    <div  className='bg-light'>
-    <Row>
-    <Col span={18} push={6}>
-    <Table
-    columns={columns}
-    dataSource={data}
-    scroll={{
-      x: 1300,
-    }}
-  />
-    </Col>
-    <Col span={6} pull={18}>
-  
-    </Col>
-  </Row>
-  
-  </div>
-   
+    <Content style={contentStyle}>
+        <Flex gap="small" wrap="wrap">
+    <Button type="primary">Primary Button</Button>
+  </Flex>
+         <Table columns={columns} dataSource={data} />
+    </Content>
   )
 }
-
 export default ItemList
