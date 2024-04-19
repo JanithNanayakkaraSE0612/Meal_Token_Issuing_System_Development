@@ -1,7 +1,17 @@
 import React from 'react'
 import {Flex, Menu} from "antd";
 import {FaLeaf} from "react-icons/fa6";
-import {UserOutlined, ProfileOutlined, LogoutOutlined, OrderedListOutlined, CarryOutOutlined, SettingOutlined,}from '@ant-design/icons';
+import {
+    // UserOutlined,
+    // ProfileOutlined,
+    LogoutOutlined,
+    DollarOutlined,
+    // OrderedListOutlined,
+    CarryOutOutlined,
+    SettingOutlined,
+    HomeOutlined,
+} from '@ant-design/icons';
+import {MdOutlineEggAlt} from "react-icons/md";
 
 
 const Sidebar = () => {
@@ -9,8 +19,9 @@ const Sidebar = () => {
     <>
       <Flex align="center" justify="center" >
           <div className="logo">
-              <a>Dashboard</a>
-              <FaLeaf/>
+              {/*<img src={'client/src/assets/tokenn.png'} alt={'logo'} className={'absolute w-[1310px] top-[130px] h-[595px] px-2 bglogo bg-opacity-0 rounded-2xl rounded-2xl'}/>*/}
+              <a className={"mainTag-dashbord"}>Meal Token Issueing</a>
+
           </div>
       </Flex>
 
@@ -21,7 +32,7 @@ const Sidebar = () => {
           items={[
               {
                   key: '1',
-                  icon: <UserOutlined />,
+                  icon: <HomeOutlined />,
                   label: 'Home',
               },
               {
@@ -31,12 +42,12 @@ const Sidebar = () => {
               },
               {
                   key: '3',
-                  icon: <OrderedListOutlined />,
+                  icon: <MdOutlineEggAlt />,
                   label: 'Meal',
               },
               {
                   key: '4',
-                  icon: <ProfileOutlined />,
+                  icon: <DollarOutlined />,
                   label: 'Order',
               },
               {
