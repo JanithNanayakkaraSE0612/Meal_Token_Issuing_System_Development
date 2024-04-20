@@ -1,11 +1,23 @@
 import React from 'react';
 import {Flex} from "antd";
+import { Col, Row } from 'antd';
 
 
 const MainContent = () => {
     return(
         <div style={{flex: 1 }}>
-            <Flex vertical gap={'2.3rem'}></Flex>
+            {/*<Flex vertical gap={'2.3rem'}></Flex>*/}
+            <Row>
+                <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
+                    Col
+                </Col>
+                <Col xs={{ span: 11, offset: 1 }} lg={{ span: 6, offset: 2 }}>
+                    Col
+                </Col>
+                <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
+                    Col
+                </Col>
+            </Row>
         </div>
     );
 };
