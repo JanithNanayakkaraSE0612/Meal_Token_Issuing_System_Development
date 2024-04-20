@@ -30,11 +30,11 @@
     color: black;
 }
 
-.logo{
+./*logo{
     color: yellow;
     margin: 50px 0;
     font-size: 1.5rem;
-}
+}*/
 
 .menu-bar{
     display: flex;

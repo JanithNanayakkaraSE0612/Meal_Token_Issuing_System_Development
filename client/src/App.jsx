@@ -1,11 +1,16 @@
 import React, {useState} from 'react'
-import {Button, Layout} from "antd";
+import {Button, Flex, Layout} from "antd";
 import {MenuUnfoldOutlined, MenuFoldOutlined} from "@ant-design/icons";
+// import Sidebar from ".//client/src/components/Sidebar.jsx";
+// import CustomHeader from ".//client/src/components/Header.jsx";
+// import App from ".//client/src/App.jsx";
 import Sidebar from "./components/Sidebar.jsx";
-import { blue } from '@ant-design/colors';
 import CustomHeader from "./components/Header.jsx";
 
+
 import './App.css'
+import MainContent from "./components/MainContent.jsx";
+import SideContent from "./components/SideContent.jsx";
 
 
 const {Sider,Header,Content} = Layout
@@ -33,8 +38,12 @@ const App = () => {
             <Header className='header'>
                 <CustomHeader />
             </Header>
-
-            <Content className='content'></Content>
+            <Content className='content'>
+                <Flex gap={"large"}>
+                    <MainContent/>
+                    <SideContent/>
+                </Flex>
+            </Content>
         </Layout>
     </Layout>
 
@@ -42,3 +51,5 @@ const App = () => {
 };
 
 export default App
+
+
