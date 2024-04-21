@@ -2,6 +2,7 @@ import React from 'react'
 import { Avatar } from 'antd';
 import { Card, Space } from 'antd';
 import { Button, Dropdown, Flex } from 'antd';
+import '../App.css'
 import {ShoppingCartOutlined, CheckCircleOutlined,DeleteOutlined,PlusSquareOutlined,MinusSquareOutlined} from '@ant-design/icons';
 const { Meta } = Card;
 const MealList = () => {

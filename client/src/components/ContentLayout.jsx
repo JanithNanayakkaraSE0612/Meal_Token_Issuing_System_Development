@@ -1,12 +1,14 @@
 import React from 'react'
 import ItemList from './ItemList'
 import '../App.css'
+import MealList from './MealList'
 
 const ContentLayout = () => {
   return (
     <div className='ContentLayout'>
        
-        <ItemList/>
+        {/* <ItemList/> */}
+        <MealList/>
     </div>
   )
 }
