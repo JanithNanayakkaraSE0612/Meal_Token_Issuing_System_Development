@@ -4,21 +4,48 @@ import { Col, Row } from 'antd';
 
 
 const MainContent = () => {
+
     return(
-        <div style={{flex: 1 }}>
-            {/*<Flex vertical gap={'2.3rem'}></Flex>*/}
-            <Row>
-                <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-                    Col
-                </Col>
-                <Col xs={{ span: 11, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-                    Col
-                </Col>
-                <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-                    Col
-                </Col>
-            </Row>
+        <div className="wrapper" style={{width: '150%'}} >
+            <div className="cards"  >
+
+                <div className=" card [ is-collapsed ] " >
+                    <div className="card__inner [ js-expander ]">
+                        <span>Card</span>
+                        <i className="fa fa-folder-o"></i>
+                    </div>
+                    <div className="card__expander">
+                        <i className="fa fa-close [ js-collapser ]"></i>
+                        Expander
+                    </div>
+                </div>
+
+                <div className=" card [ is-collapsed ] ">
+                    <div className="card__inner [ js-expander ]">
+                        <span>Card</span>
+                        <i className="fa fa-folder-o"></i>
+                    </div>
+                    <div className="card__expander">
+                        <i className="fa fa-close [ js-collapser ]"></i>
+                        Expander
+                    </div>
+                </div>
+
+                <div className=" card [ is-collapsed ] ">
+                    <div className="card__inner [ js-expander ]">
+                        <span>Card</span>
+                        <i className="fa fa-folder-o"></i>
+                    </div>
+                    <div className="card__expander">
+                        <i className="fa fa-close [ js-collapser ]"></i>
+                        Expander
+                    </div>
+                </div>
+
+            </div>
+
         </div>
+
     );
 };
 
