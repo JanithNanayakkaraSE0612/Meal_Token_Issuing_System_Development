@@ -92,7 +92,8 @@ body {
 }
 
 .wrapper {
-    margin: 5em auto;
+    margin-top: -30px;
+    margin-left: 3.5%;
     max-width: 1000px;
     background-color: #fff;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.06);
@@ -144,7 +145,7 @@ body {
     transform: scale(1.05);
 }
 .card__inner {
-    width: 100%;
+    width: 105%;
     padding: 100px;
     position: relative;
     cursor: pointer;
