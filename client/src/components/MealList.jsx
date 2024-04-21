@@ -8,8 +8,8 @@ const { Meta } = Card;
 const MealList = () => {
   return (
     <Space direction='vertical' size={2}>
-   <div style={{backgroundColor:'#DFF9FB',width:1345}}>
-    <div style={{position:'absolute'}}>
+   <div style={{backgroundColor:'#e6eef2',width:1455}}>
+    <div style={{position:'relative ',Flex}}>
     <Card
     style={{
       width: 250,
@@ -99,7 +99,7 @@ const MealList = () => {
     />
   </Card>
   </div>
-      <div style={{width:300,backgroundColor:'#DFF9FB',marginLeft:1000,marginTop:-150,}}>
+      <div style={{width:300,backgroundColor:'#DFF9FB',marginLeft:1000,marginTop:-550,}}>
         <Card
           style={{
               width: 300,
