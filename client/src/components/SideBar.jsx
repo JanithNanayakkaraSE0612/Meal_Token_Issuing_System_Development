@@ -77,7 +77,7 @@ import React from 'react';
 import { Flex, Menu } from 'antd';
 import { CarryOutOutlined, HomeOutlined, DollarOutlined } from '@ant-design/icons';
 import { MdOutlineEggAlt } from 'react-icons/md';
-import logoImage from '../assets/tokenn.png';
+import logoImage from '../assets/token.webp';
 
 const Sidebar = () => {
     return (
