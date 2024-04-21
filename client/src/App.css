@@ -270,11 +270,17 @@ body {
   background-color: aliceblue;
 }
 
+.buttonList{
+  display: flex;
+  height: 60px;
+}
 
 .button {
   position: relative;
   width: 120px;
-  height: 40px;
+  height: 45px;
+  margin-top: 15px;
+  margin-left: 1580px;
   background-color: #000;
   display: flex;
   align-items: center;
@@ -326,11 +332,18 @@ body {
   scale: 0.7;
 }
 
-
-
  .ContentLayout{
   width: 4300px;
-  margin-top: -20px;
-  height: 85vh;
+  margin-top: -25px;
+  margin-left: -20px;
+  height: 87vh;
   display: flex;
  }
+
+ .backIcon{
+  margin-top: -25px;
+ }
+ .backIcon:hover{
+    cursor: pointer;
+ }
+ 

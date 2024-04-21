@@ -108,9 +108,9 @@ const contentStyle = {
 const ItemList = () => {
   return (
     <Content className='ItemList' style={contentStyle}>
-        <Flex gap="small" wrap="wrap">
-        <button className="button">
-            Button
+        <Flex className='buttonList' gap="small" wrap="wrap">
+           <button className="button">
+            Add Item
        </button>
    </Flex>
          <Table columns={columns} dataSource={data} />

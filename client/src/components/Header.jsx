@@ -2,12 +2,13 @@ import React from "react";
 import {Avatar, Flex, Typography} from "antd";
 import Search from "antd/es/input/Search.js";
 import {BellOutlined, BackwardOutlined} from "@ant-design/icons";
+import '../App.css'
 
 
 const CustomHeader = () => {
         return(
-            <Flex align='center' justify={"space-between"} gap='4px'>
-                <Avatar icon={<BackwardOutlined/>}/>
+            <Flex align='center' justify={"space-between"} gap='2px'>
+                <Avatar className="backIcon" icon={<BackwardOutlined/>}/>
 
 
             <Flex align='center' justify='space-between'>
