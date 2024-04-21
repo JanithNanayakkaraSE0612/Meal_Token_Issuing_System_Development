@@ -109,7 +109,9 @@ const ItemList = () => {
   return (
     <Content className='ItemList' style={contentStyle}>
         <Flex gap="small" wrap="wrap">
-    <Button className='addItem'>Add New Item</Button>
+        <button className='addItemButton'>
+  <span className="addItem">Button</span>
+</button>
   </Flex>
          <Table columns={columns} dataSource={data} />
     </Content>
