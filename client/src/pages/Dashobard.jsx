@@ -5,12 +5,11 @@ import {MenuUnfoldOutlined, MenuFoldOutlined} from "@ant-design/icons";
 // import CustomHeader from ".//client/src/components/Header.jsx";
 // import App from ".//client/src/App.jsx";
 import Sidebar from '../components/SideBar.jsx';
-import CustomHeader from "./components/Header.jsx";
+import CustomHeader from "../components/Header.jsx";
 
+import '../App.css'
+import MainContent from "../components/MainContent.jsx";
 
-import './App.css'
-import MainContent from "./components/MainContent.jsx";
-import SideContent from "./components/SideContent.jsx";
 
 
 const {Sider,Header,Content} = Layout
@@ -44,7 +43,6 @@ const Dashobard = () => {
           <Content className='content'>
               <Flex gap={"large"}>
                   <MainContent/>
-                  <SideContent/>
               </Flex>
           </Content>
       </Layout>

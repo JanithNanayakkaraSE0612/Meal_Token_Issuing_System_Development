@@ -80,7 +80,7 @@ import { MdOutlineEggAlt } from 'react-icons/md';
 import logoImage from '../assets/token.webp';
 
 const Sidebar = () => {
-    return (
+    return ( 
         <>
             <Flex align="center" justify="center">
                 <div className="logo">

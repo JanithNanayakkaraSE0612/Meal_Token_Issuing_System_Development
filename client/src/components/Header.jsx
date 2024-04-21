@@ -3,6 +3,7 @@ import {Avatar, Flex, Typography} from "antd";
 import Search from "antd/es/input/Search.js";
 import {BellOutlined, BackwardOutlined} from "@ant-design/icons";
 
+
 const CustomHeader = () => {
         return(
             <Flex align='center' justify={"space-between"} gap='4px'>
@@ -16,7 +17,7 @@ const CustomHeader = () => {
 
 
 
-            <Flex align="center" gap='3rem'>
+            {/* <Flex align="center" gap='3rem'>
                 <Search placeholder="Search Dashboard" allowClear/>
 
 
@@ -24,7 +25,7 @@ const CustomHeader = () => {
                 <Flex align='center' gap='10px'>
                     <Avatar icon={<BellOutlined/>}/>
                 </Flex>
-            </Flex>
+            </Flex> */}
         </Flex>
      </Flex>
     );

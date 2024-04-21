@@ -6,6 +6,7 @@ import { Slider } from 'antd'
 
 
 
+
 const Home = () => {
   return (
     <div className='bg-light '>
