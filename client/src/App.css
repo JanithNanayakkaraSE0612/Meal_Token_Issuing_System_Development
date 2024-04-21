@@ -271,65 +271,66 @@ body {
 }
 
 
-.addItem{
-  background-color: #FEAF00;
-  color: black;
-  margin-left: 860px;
-  margin-top: 5px;
-}
-
-.addItem:hover{
-  background-color: #4a4948;
-}
-
-.ItemList{
-  width: 1000px;
-}
-
-.addItemButton {
-  align-items: center;
-  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
-  border: 0;
-  border-radius: 8px;
-  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
-  box-sizing: border-box;
-  color: #FFFFFF;
+.button {
+  position: relative;
+  width: 120px;
+  height: 40px;
+  background-color: #000;
   display: flex;
-  font-family: Phantomsans, sans-serif;
-  font-size: 18px;
+  align-items: center;
+  color: white;
+  flex-direction: column;
   justify-content: center;
-  line-height: 1em;
-  max-width: 100%;
-  min-width: 140px;
-  padding: 3px;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  white-space: nowrap;
+  border: none;
+  padding: 12px;
+  gap: 12px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: all .3s;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  left: -4px;
+  top: -1px;
+  margin: auto;
+  width: 128px;
+  height: 48px;
+  border-radius: 10px;
+  background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100% );
+  z-index: -10;
+  pointer-events: none;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.button::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100% );
+  transform: translate3d(0, 0, 0) scale(0.95);
+  filter: blur(20px);
+}
+
+.button:hover::after {
+  filter: blur(30px);
+}
+
+.button:hover::before {
+  transform: rotate(-180deg);
+}
+
+.button:active::before {
+  scale: 0.7;
+}
+
+
+
+ .ContentLayout{
+  width: 4300px;
+  margin-top: -20px;
+  height: 85vh;
+  display: flex;
  }
- 
- .addItemButton:active,
- .addItemButton:hover {
-  outline: 0;
- }
- 
- .addItem{
-  background-color: rgb(5, 6, 45);
-  padding: 16px 24px;
-  border-radius: 6px;
-  width: 100%;
-  height: 100%;
-  transition: 300ms;
- }
- 
- .addItemButton:hover addItem {
-  background: none;
- }
- 
- .addItemButton:active {
-  transform: scale(0.9);
- }
- 

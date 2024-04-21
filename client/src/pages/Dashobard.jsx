@@ -9,6 +9,8 @@ import CustomHeader from "../components/Header.jsx";
 
 import '../App.css'
 import MainContent from "../components/MainContent.jsx";
+import ContentLayout from '../components/ContentLayout.jsx';
+
 
 
 
@@ -42,7 +44,8 @@ const Dashobard = () => {
           </Header>
           <Content className='content'>
               <Flex gap={"large"}>
-                  <MainContent/>
+                  {/* <MainContent/> */}
+                  <ContentLayout/>
               </Flex>
           </Content>
       </Layout>
