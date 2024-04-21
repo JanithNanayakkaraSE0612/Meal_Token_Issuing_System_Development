@@ -8,7 +8,7 @@ const { Meta } = Card;
 const MealList = () => {
   return (
     <Space direction='vertical' size={2}>
-   <div style={{backgroundColor:'#e6eef2',width:1455}}>
+   <div style={{backgroundColor:'#e6eef2',width:1455,height:705}}>
     <div style={{position:'relative ',Flex}}>
     <Card
     style={{
