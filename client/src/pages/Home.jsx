@@ -1,8 +1,7 @@
 import React from 'react'
-import ItemList from '../components/ItemList'
-import MealList from '../components/MealList'
+import AdminDashboard from './AdminDashboard'
 import Dashobard from './Dashobard'
-import { Slider } from 'antd'
+
 
 
 
@@ -10,11 +9,9 @@ import { Slider } from 'antd'
 const Home = () => {
   return (
     <div className='bg-light '>
-      {/* <ItemList/> */}
-      {/* <MealList/> */}
-      {/* <Slider/> */}
+    
     <Dashobard/>  
-      
+      {/* <AdminDashboard/> */}
     </div>
   )
 }

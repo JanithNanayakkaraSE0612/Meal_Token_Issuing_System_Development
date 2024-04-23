@@ -1,20 +1,24 @@
 import React from 'react'
-import Home from './pages/Home'
-import {BrowserRouter, Route, Routes} from 'react-router-dom'
-import ItemList from './components/ItemList'
-import MealList from './components/MealList'
-import ContentLayout from './components/ContentLayout'
+import './App.css'
+import { Space } from "antd";
+import AppHeader from './components/AppHeader';
+import SideMenu from './components/SideMenu';
+import AppFooter from './components/AppFooter';
+import Sidebar from './components/SideBar';
+import PageContent from './components/PageContent';
+
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Home/>}></Route>
-        <Route path='/item' element={<ItemList/>}></Route>
-        <Route path='/meal' element={<MealList/>}></Route>
-        <Route path='/contentLayout' element={<ContentLayout/>}></Route>
-      </Routes>
-    </BrowserRouter>
+    <div className="App">
+    <AppHeader />
+    <div className="SideMenuAndPageContent">
+      {/* <Sidebar/> */}
+      {/* <PageContent></PageContent> */}
+      <PageContent/>
+    </div>
+    <AppFooter />
+  </div>
   )
 }
 
