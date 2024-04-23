@@ -47,8 +47,8 @@ const columns = [
     key: 'action',
     render: (_, record) => (
       <Space size="middle">
-        <a>Edit</a>
-        <a>Delete</a>
+        <a onClick={handleUpdateItem}>Edit</a>
+        <a onClick={handleDelete}>Delete</a>
       </Space>
     ),
   },

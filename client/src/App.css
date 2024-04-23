@@ -351,3 +351,45 @@ body {
   position: relative;
   width: 100%;
  }
+
+
+
+ .custom-form {
+  width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  height: fit-content;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.custom-form .ant-form-item-label {
+  text-align: left;
+  font-weight: bold;
+}
+
+.custom-form .ant-btn-primary {
+  background-color: #1890ff;
+  border-color: #1890ff;
+}
+
+.custom-form .ant-btn-primary:hover,
+.custom-form .ant-btn-primary:focus {
+  background-color: #40a9ff;
+  border-color: #40a9ff;
+}
+
+.custom-form .ant-upload {
+  width: 100%;
+  border: 1px dashed #d9d9d9;
+  border-radius: 4px;
+}
+
+.custom-form .ant-upload:hover {
+  border-color: #1890ff;
+}
+
+.custom-form .ant-upload-list-item-actions {
+  display: none;
+}
