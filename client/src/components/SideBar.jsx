@@ -3,23 +3,25 @@ import React from 'react';
 import { Flex, Menu } from 'antd';
 import { CarryOutOutlined, HomeOutlined, DollarOutlined } from '@ant-design/icons';
 import { MdOutlineEggAlt } from 'react-icons/md';
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import logoImage from '../assets/token.webp';
 import ItemList from './ItemList';
 import MealList from './MealList';
+import '../App.css'
 
 const Sidebar = () => {
+    const location = useLocation();
+    const [selectedKeys, setSelectedKeys] = useState("/");
+  
+    useEffect(() => {
+      const pathName = location.pathname;
+      setSelectedKeys(pathName);
+    }, [location.pathname]);
+  
+    const navigate = useNavigate();
     return ( 
-        <div className='sideBar'>
-            <Flex align="center" justify="center">
-                <div className="logo">
-                    <div style={{ marginTop: '20%'}}>
-                        <a className="mainTag-dashbord" style={{marginLeft: '10px', marginBottom: '20%' , marginTop: '10%'}}>Meal Token Issuing</a>
-
-                    </div>
-                <img src={logoImage} alt="logo" className="absolute" style={{ width: '90px' , alignContent: 'center' , marginRight: '10%', marginLeft: '20%' , marginTop: '20%' ,marginBottom: '10%'}} />
-                </div>
-            </Flex>
-
+        <div className='SideMenuVertical'>
             <Menu
                 mode="inline"
                 defaultSelectedKeys={['1']}
