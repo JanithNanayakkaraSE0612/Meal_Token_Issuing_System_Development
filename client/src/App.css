@@ -333,7 +333,7 @@ body {
 }
 
  .ContentLayout{
-  width: 4300px;
+  width: 3800px;
   margin-top: -25px;
   margin-left: -20px;
   height: 87vh;
@@ -347,3 +347,7 @@ body {
     cursor: pointer;
  }
  
+ .FlexStyle{
+  position: relative;
+  width: 100%;
+ }

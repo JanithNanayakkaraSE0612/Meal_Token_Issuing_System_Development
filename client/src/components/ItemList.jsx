@@ -105,9 +105,11 @@ const contentStyle = {
   backgroundColor: 'white',
 };
 
+
+
 const ItemList = () => {
   return (
-    <Flex>
+    <Flex wrap='wrap' className='FlexStyle'>
     <Content className='ItemList' style={contentStyle}>
         <Flex className='buttonList' gap="small" wrap="wrap">
            <button className="button">
