@@ -2,6 +2,11 @@ import React from 'react';
 import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
 import { Layout, Menu, theme } from 'antd';
 import ManageItems from './components/ManageItems';
+import CompileMeals from './components/CompileMeals';
+import BrowseMeals from './components/BrowseMeals';
+import ViewItem from './components/ViewItem';
+import ItemDetailsPage from './components/ItemDetailsPage';
+import RedeemPage from './components/RedeemPage';
 const { Header, Content, Footer, Sider } = Layout;
 const items = [UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined].map(
   (icon, index) => ({
@@ -46,12 +51,16 @@ const App = () => {
           <div
             style={{
               padding: 24,
-              minHeight: 360,
+              minHeight: 654,
               background: colorBgContainer,
               borderRadius: borderRadiusLG,
             }}
           >
-           <ManageItems/>
+           {/* <ManageItems/> */}
+          {/* <CompileMeals/> */}
+          {/* <BrowseMeals/> */}
+          {/* <ItemDetailsPage/> */}
+          {/* <RedeemPage/> */}
           </div>
         </Content>
         <Footer
