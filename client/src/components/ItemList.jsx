@@ -1,9 +1,9 @@
-import React from 'react'
+import React , { useState, useEffect } from 'react'
 import '../App.css'
 import { Space, Table, Tag } from 'antd';
-import {  Layout } from 'antd'; // Assuming Flex is a component from 'antd' library
-const { Header, Footer, Sider, Content } = Layout;
-import { Button, Flex } from 'antd';
+import {  Layout } from 'antd'; 
+const {  Content } = Layout;
+import { Flex } from 'antd';
 
 const columns = [
   {
@@ -108,11 +108,60 @@ const contentStyle = {
 
 
 const ItemList = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get('https://');
+      setData(response.data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`https:// /delete/${id}`);
+      fetchData();
+    } catch (error) {
+      console.error('Error deleting item:', error);
+    }
+  };
+
+  const handleCreateItem = async (values) => {
+    try {
+      await axios.post('https:// /posts', values);
+      fetchData();
+      setModalVisible(false);
+      form.resetFields();
+    } catch (error) {
+      console.error('Error creating item:', error);
+    }
+  };
+
+  const handleUpdateItem = async (id) => {
+    try {
+      const response = await axios.put(`${updateUrl}/${id}`, updateData); // Include ID if needed
+      console.log("Item updated successfully:", response.data);
+      // Optionally, refetch data to update the table
+      fetchData();
+    } catch (error) {
+      console.error("Error updating item:", error);
+    }
+  };
+  
+  const handleAddItem = () => {
+    setModalVisible(true);
+  };
   return (
-    <Flex wrap='wrap' className='FlexStyle'>
+    <Flex wrap='wrap'  className='FlexStyle'>
     <Content className='ItemList' style={contentStyle}>
         <Flex className='buttonList' gap="small" wrap="wrap">
-           <button className="button">
+           <button className="button" onClick={handleAddItem}>
             Add Item
        </button>
    </Flex>
