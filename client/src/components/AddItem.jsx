@@ -9,30 +9,6 @@ const AddItem = () => {
   const navigate = useNavigate();
   const [componentDisabled, setComponentDisabled] = useState(false);
 
-  screenshotBtn.onclick = function(){
-    // generate the screenshot
-    chrome.tabs.captureVisibleTab(null, { format: 'png', quality: 80 }, function(dataUrl){
-  
-      let body = {
-        "image" : dataUrl
-      };
-  
-      // upload to Firebase Storage
-      let url = endpoint + '/uploadImage';
-      fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(body)
-      })
-      .then((response) => response.json())
-      .then(data => {
-        console.log(data);
-      });
-    });
-  };
-  
   const normFile = (e) => {
     if (Array.isArray(e)) {
       return e;
@@ -77,21 +53,21 @@ const AddItem = () => {
       <Form.Item
         label="ID"
         name="id"
-        rules={[{ required: true, message: 'Please enter input id' }]}
+        rules={[{ required: true, message: 'Please enter input ID' }]}
       >
         <Input placeholder="001" />
       </Form.Item>
       <Form.Item
         label="Name"
-        name="name" // Adjusted name to match the input field
-        rules={[{ required: true, message: 'Please enter input name' }]}
+        name="name"
+        rules={[{ required: true, message: 'Please enter input Name' }]}
       >
         <Input placeholder="Enter Name" />
       </Form.Item>
       <Form.Item
         label="Price"
-        name="price" // Adjusted name to match the input field
-        rules={[{ required: true, message: 'Please enter input price' }]}
+        name="price"
+        rules={[{ required: true, message: 'Please enter input Price' }]}
       >
         <Input placeholder="Enter Price" />
       </Form.Item>
