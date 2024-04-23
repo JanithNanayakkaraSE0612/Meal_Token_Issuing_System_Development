@@ -20,12 +20,7 @@ const AddItem = () => {
     const [componentDisabled, setComponentDisabled] = useState(false);
     return (
       <>
-        {/* <Checkbox
-          checked={componentDisabled}
-          onChange={(e) => setComponentDisabled(e.target.checked)}
-        >
-          Form disabled
-        </Checkbox> */}
+       
         <Form
           labelCol={{
             span: 4,

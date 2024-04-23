@@ -8,8 +8,8 @@ import AddItem from './AddItem'
 const ContentLayout = () => {
   return (
     <div className='ContentLayout'>
-       <AddItem/>
-        {/* <ItemList/> */}
+       {/* <AddItem/> */}
+        <ItemList/>
         {/* <MealList/> */}
         {/* <OrderDetails/> */}
     </div>

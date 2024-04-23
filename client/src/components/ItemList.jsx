@@ -107,6 +107,7 @@ const contentStyle = {
 
 const ItemList = () => {
   return (
+    <Flex>
     <Content className='ItemList' style={contentStyle}>
         <Flex className='buttonList' gap="small" wrap="wrap">
            <button className="button">
@@ -115,6 +116,7 @@ const ItemList = () => {
    </Flex>
          <Table columns={columns} dataSource={data} />
     </Content>
+    </Flex>
   )
 }
 export default ItemList
