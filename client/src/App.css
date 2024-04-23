@@ -370,8 +370,8 @@ body {
 }
 
 .custom-form .ant-btn-primary {
-  background-color: #1890ff;
-  border-color: #1890ff;
+  background-color: #d9d9d9;
+  border-color: #bab97d;
 }
 
 .custom-form .ant-btn-primary:hover,
@@ -382,7 +382,7 @@ body {
 
 .custom-form .ant-upload {
   width: 100%;
-  border: 1px dashed #d9d9d9;
+  border: 1px dashed #7b7b7b;
   border-radius: 4px;
 }
 
