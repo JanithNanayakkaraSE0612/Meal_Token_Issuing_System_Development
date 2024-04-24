@@ -68,7 +68,7 @@ const App = () => {
             textAlign: 'center',
           }}
         >
-           ©{new Date().getFullYear()} Created by Ant UED
+           Token Issue System ©{new Date().getFullYear()} Created by Kingteza
         </Footer>
       </Layout>
     </Layout>
