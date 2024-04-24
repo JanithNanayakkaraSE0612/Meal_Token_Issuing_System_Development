@@ -3,6 +3,8 @@ import { Badge, Drawer, Image, List, Space, Typography } from "antd";
 import { useEffect, useState } from "react";
 import { getComments, getOrders } from "../API";
 import logoImage from '../assets/token.webp';
+import '../App.css';
+
 
 
 const AppHeader = () => {
@@ -25,7 +27,7 @@ const AppHeader = () => {
       width={40}
       src={logoImage}
     ></Image>
-    <Typography.Title>Meal Token Issuing System</Typography.Title>
+    <Typography.Title className={'maintag-Font'}>Meal Token Issuing System</Typography.Title>
     <Space>
       <Badge count={comments.length} dot>
         <MailOutlined

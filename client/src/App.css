@@ -7,6 +7,7 @@
 .AppHeader{
   height: 50px;
   display: flex;
+  margin-top: -100px;
   justify-content: space-between;
   align-items: center;
   padding: 4px 20px 4px 12px;
@@ -34,7 +35,7 @@ border-top: 1px solid rgba(0, 0, 0, 0.15);
   height: 100%;
 }
 .PageContent{
-  padding-left: 12px;
+  padding-left: 10px;
 }
 
 
@@ -488,3 +489,10 @@ body {
 .clickBtn:active {
   transform: scale(0.9);
 }
+
+/*Main tag DashBoard*/
+
+/*.maintag-Font{*/
+/*  margin-top: -180px*/
+
+/*}*/

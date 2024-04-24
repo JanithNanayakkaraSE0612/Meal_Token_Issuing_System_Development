@@ -16,6 +16,7 @@ import ItemDetailsPage from './components/ItemDetailsPage';
 import RedeemPage from './components/RedeemPage';
 import {useLocation, useNavigate} from "react-router-dom";
 import {MdNoMealsOuline} from "react-icons/md";
+import AppHeader from "./components/AppHeader.jsx";
 import {BiFoodMenu} from "react-icons/bi";
 import OrderDetails from "./components/OrderDetails.jsx";
 const { Header, Content, Footer, Sider } = Layout;
@@ -125,7 +126,7 @@ const App = () => {
            {/*<BrowseMeals/> */}
            {/*<ItemDetailsPage/>*/}
            {/*<RedeemPage/>*/}
-           {/*   <AppHeader/>*/}
+              <AppHeader/>
 
           </div>
         </Content>
