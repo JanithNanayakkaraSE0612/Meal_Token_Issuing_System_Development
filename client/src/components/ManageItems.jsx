@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Button, Table, Modal, Form, Input, Space, message } from 'antd';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { Button, Table, Modal, Form, Input, Space, message } from "antd";
+import axios from "axios";
 
 const ManageItems = () => {
   const [items, setItems] = useState([]);
@@ -13,33 +13,33 @@ const ManageItems = () => {
 
   const fetchItems = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/items');
+      const response = await axios.get("http://localhost:3001/items");
       setItems(response.data);
     } catch (error) {
-      console.error('Error fetching items:', error);
+      console.error("Error fetching items:", error);
     }
   };
 
   const handleCreate = async (values) => {
     try {
-      await axios.post('http://localhost:3001/items', values);
-      message.success('Item created successfully!');
+      await axios.post("http://localhost:3001/items", values);
+      message.success("Item created successfully!");
       setVisible(false);
       form.resetFields();
       fetchItems();
     } catch (error) {
-      console.error('Error creating item:', error);
-      message.error('Failed to create item.');
+      console.error("Error creating item:", error);
+      message.error("Failed to create item.");
     }
   };
 
   const columns = [
-    { title: 'ID', dataIndex: 'id', key: 'id' },
-    { title: 'Name', dataIndex: 'name', key: 'name' },
-    { title: 'Price', dataIndex: 'price', key: 'price' },
+    { title: "ID", dataIndex: "id", key: "id" },
+    { title: "Name", dataIndex: "name", key: "name" },
+    { title: "Price", dataIndex: "price", key: "price" },
     {
-      title: 'Actions',
-      key: 'actions',
+      title: "Actions",
+      key: "actions",
       render: (text, record) => (
         <Space>
           <Button type="primary" onClick={() => handleEdit(record)}>
@@ -64,17 +64,17 @@ const ManageItems = () => {
   // };
   const handleEdit = (record) => {
     // Implement edit functionality
-    console.log('Edit item:', record);
+    console.log("Edit item:", record);
   };
 
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:3001/items/${id}`);
-      message.success('Item deleted successfully!');
+      message.success("Item deleted successfully!");
       fetchItems();
     } catch (error) {
-      console.error('Error deleting item:', error);
-      message.error('Failed to delete item.');
+      console.error("Error deleting item:", error);
+      message.error("Failed to delete item.");
     }
   };
 
@@ -102,14 +102,14 @@ const ManageItems = () => {
           <Form.Item
             label="Name"
             name="name"
-            rules={[{ required: true, message: 'Please enter the name!' }]}
+            rules={[{ required: true, message: "Please enter the name!" }]}
           >
             <Input />
           </Form.Item>
           <Form.Item
             label="Price"
             name="price"
-            rules={[{ required: true, message: 'Please enter the price!' }]}
+            rules={[{ required: true, message: "Please enter the price!" }]}
           >
             <Input type="number" />
           </Form.Item>
