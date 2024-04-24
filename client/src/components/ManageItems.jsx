@@ -52,7 +52,16 @@ const ManageItems = () => {
       ),
     },
   ];
-
+  // const handleUpdateItem = async (id) => {
+  //   try {
+  //     const response = await axios.put(`${updateUrl}/${id}`, updateData); // Include ID if needed
+  //     console.log("Item updated successfully:", response.data);
+  //     // Optionally, refetch data to update the table
+  //     fetchData();
+  //   } catch (error) {
+  //     console.error("Error updating item:", error);
+  //   }
+  // };
   const handleEdit = (record) => {
     // Implement edit functionality
     console.log('Edit item:', record);
