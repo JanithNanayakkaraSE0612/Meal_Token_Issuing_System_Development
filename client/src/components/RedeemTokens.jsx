@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, message } from 'antd';
+import '../App.css'
+
 
 const RedeemTokens = () => {
   const [form] = Form.useForm();
@@ -26,7 +28,7 @@ const RedeemTokens = () => {
 
         {!redeemed ? (
           <Form.Item>
-            <Button type="primary" htmlType="submit">
+            <Button className={'clickBtn'} type="primary" htmlType="submit">
               Redeem Token
             </Button>
           </Form.Item>

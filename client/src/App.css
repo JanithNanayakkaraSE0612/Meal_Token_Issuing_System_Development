@@ -7,11 +7,25 @@
 .AppHeader{
   height: 50px;
   display: flex;
+  position: fixed;
+  margin-top: -100px;
   justify-content: space-between;
   align-items: center;
   padding: 4px 20px 4px 12px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  font-size: xx-small;
 }
+
+.mailIcon{
+  display: flex;
+  margin-left: 31vw;
+}
+
+.bellIcon{
+  display: flex;
+  margin-left: 3vw;
+}
+
 .AppFooter{
 height: 50px;
 display: flex;
@@ -34,7 +48,7 @@ border-top: 1px solid rgba(0, 0, 0, 0.15);
   height: 100%;
 }
 .PageContent{
-  padding-left: 12px;
+  padding-left: 10px;
 }
 
 
@@ -436,3 +450,62 @@ body {
 .custom-form .ant-upload-list-item-actions {
   display: none;
 }
+
+/*Compile Meal*/
+
+.clickBtn{
+  align-items: center;
+  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: whitesmoke;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 140px;
+  padding: 5px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all .3s;
+  margin-left: 80%;
+  top: -5px;
+}
+
+.clickBtn:active,button:hover{
+  outline: 0;
+}
+
+.clickBtn span{
+  background-color: rgb(5, 6, 45);
+  padding: 12px 30px;
+  border-radius: 2px;
+  width: 100%;
+  height: 50%;
+  transition: 500ms;
+}
+
+
+.clickBtn:hover span {
+  background: none;
+}
+
+.clickBtn:active {
+  transform: scale(0.9);
+}
+
+/*Main tag DashBoard*/
+
+/*.maintag-Font{*/
+/*  margin-top: -180px*/
+
+/*}*/

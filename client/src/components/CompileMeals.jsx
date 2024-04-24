@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Table, Modal, Form, Input, Space, message } from 'antd';
 import axios from 'axios';
+import '../App.css'
+
 
 const CompileMeals = () => {
   const [meals, setMeals] = useState([]);
@@ -41,7 +43,7 @@ const CompileMeals = () => {
 
   return (
     <div>
-      <Button type="primary" onClick={() => setVisible(true)}>
+      <Button className={'clickBtn'} type="primary" onClick={() => setVisible(true)}>
         Create Meal
       </Button>
       <Table dataSource={meals} columns={columns} rowKey="id" />

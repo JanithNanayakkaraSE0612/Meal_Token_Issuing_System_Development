@@ -9,8 +9,8 @@ import Dashobard from './Dashobard'
 const Home = () => {
   return (
     <div className='bg-light '>
-    
-    <Dashobard/>  
+
+    <Dashobard/>
       {/* <AdminDashboard/> */}
     </div>
   )
