@@ -19,6 +19,7 @@ import {MdNoMealsOuline} from "react-icons/md";
 import AppHeader from "./components/AppHeader.jsx";
 import {BiFoodMenu} from "react-icons/bi";
 import OrderDetails from "./components/OrderDetails.jsx";
+import Dashboard from "./pages/Dashobard.jsx";
 const { Header, Content, Footer, Sider } = Layout;
 const items = [HomeOutlined, TagOutlined,BiFoodMenu, OrderedListOutlined].map(
   (icon, index) => ({
@@ -121,12 +122,13 @@ const App = () => {
               borderRadius: borderRadiusLG,
             }}
           >
+              <AppHeader/>
             {/*<ManageItems/>*/}
            {/*<CompileMeals/>*/}
            {/*<BrowseMeals/> */}
            {/*<ItemDetailsPage/>*/}
            {/*<RedeemPage/>*/}
-              <AppHeader/>
+           {/*   <Dashboard/>*/}
 
           </div>
         </Content>

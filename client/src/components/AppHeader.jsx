@@ -27,10 +27,10 @@ const AppHeader = () => {
       width={40}
       src={logoImage}
     ></Image>
-    <Typography.Title className={'maintag-Font'}>Meal Token Issuing System</Typography.Title>
+    <Typography.Title className={'maintag-Font'} >Meal Token Issuing System</Typography.Title>
     <Space>
       <Badge count={comments.length} dot>
-        <MailOutlined
+        <MailOutlined className={'mailIcon'}
           style={{ fontSize: 24 }}
           onClick={() => {
             setCommentsOpen(true);
@@ -38,7 +38,7 @@ const AppHeader = () => {
         />
       </Badge>
       <Badge count={orders.length}>
-        <BellFilled
+        <BellFilled className={'bellIcon'}
           style={{ fontSize: 24 }}
           onClick={() => {
             setNotificationsOpen(true);

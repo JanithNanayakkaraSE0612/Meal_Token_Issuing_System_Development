@@ -7,12 +7,25 @@
 .AppHeader{
   height: 50px;
   display: flex;
+  position: fixed;
   margin-top: -100px;
   justify-content: space-between;
   align-items: center;
   padding: 4px 20px 4px 12px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  font-size: xx-small;
 }
+
+.mailIcon{
+  display: flex;
+  margin-left: 31vw;
+}
+
+.bellIcon{
+  display: flex;
+  margin-left: 3vw;
+}
+
 .AppFooter{
 height: 50px;
 display: flex;
