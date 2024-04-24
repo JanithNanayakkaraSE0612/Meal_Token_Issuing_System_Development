@@ -1,5 +1,12 @@
 import React from 'react';
-import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
+import {
+    ForkOutlined,
+    HomeOutlined, OrderedListOutlined,
+    TagOutlined,
+    UploadOutlined,
+    UserOutlined,
+    VideoCameraOutlined
+} from '@ant-design/icons';
 import { Layout, Menu, theme } from 'antd';
 import ManageItems from './components/ManageItems';
 import CompileMeals from './components/CompileMeals';
@@ -7,14 +14,71 @@ import BrowseMeals from './components/BrowseMeals';
 import ViewItem from './components/ViewItem';
 import ItemDetailsPage from './components/ItemDetailsPage';
 import RedeemPage from './components/RedeemPage';
+import {useLocation, useNavigate} from "react-router-dom";
+import {MdNoMealsOuline} from "react-icons/md";
+import {BiFoodMenu} from "react-icons/bi";
+import OrderDetails from "./components/OrderDetails.jsx";
 const { Header, Content, Footer, Sider } = Layout;
-const items = [UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined].map(
+const items = [HomeOutlined, TagOutlined,BiFoodMenu, OrderedListOutlined].map(
   (icon, index) => ({
     key: String(index + 1),
     icon: React.createElement(icon),
-    label: `nav ${index + 1}`,
+    label: `nav`,
   }),
+    (icon, index) => ({
+        key: String(index + 2),
+        icon: React.createElement(icon),
+        label: `n`,
+    }),
 );
+
+// function SideMenu() {
+//     const location = useLocation();
+//     const [selectedKeys, setSelectedKeys] = useState("/");
+//
+//     useEffect(() => {
+//         const pathName = location.pathname;
+//         setSelectedKeys(pathName);
+//     }, [location.pathname]);
+//
+//     const navigate = useNavigate();
+//     return (
+//         <div className="SideMenu">
+//             <Menu
+//                 className="SideMenuVertical"
+//                 mode="vertical"
+//                 onClick={(item) => {
+//                     //item.key
+//                     navigate(item.key);
+//                 }}
+//                 selectedKeys={[selectedKeys]}
+//                 items={[
+//                     {
+//                         label: "Dashbaord",
+//                         icon: <AppstoreOutlined />,
+//                         key: "/",
+//                     },
+//                     {
+//                         label: "Inventory",
+//                         key: "/inventory",
+//                         icon: <ShopOutlined />,
+//                     },
+//                     {
+//                         label: "Orders",
+//                         key: "/orders",
+//                         icon: <ShoppingCartOutlined />,
+//                     },
+//                     {
+//                         label: "Customers",
+//                         key: "/customers",
+//                         icon: <UserOutlined />,
+//                     },
+//                 ]}
+//             ></Menu>
+//         </div>
+//     );
+// }
+
 const App = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -41,7 +105,7 @@ const App = () => {
             background: colorBgContainer,
           }}
         >
-            
+
           </Header>
         <Content
           style={{
@@ -56,11 +120,13 @@ const App = () => {
               borderRadius: borderRadiusLG,
             }}
           >
-           {/* <ManageItems/> */}
-          {/* <CompileMeals/> */}
-          {/* <BrowseMeals/> */}
-          {/* <ItemDetailsPage/> */}
-          {/* <RedeemPage/> */}
+            {/*<ManageItems/>*/}
+           {/*<CompileMeals/>*/}
+           {/*<BrowseMeals/> */}
+           {/*<ItemDetailsPage/>*/}
+           {/*<RedeemPage/>*/}
+           {/*   <AppHeader/>*/}
+
           </div>
         </Content>
         <Footer
@@ -68,7 +134,7 @@ const App = () => {
             textAlign: 'center',
           }}
         >
-           ©{new Date().getFullYear()} Created by Ant UED
+           ©{new Date().getFullYear()} Created by BizSoft Software Solutions
         </Footer>
       </Layout>
     </Layout>

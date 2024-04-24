@@ -11,12 +11,12 @@ const ContentLayout = () => {
   return (
     <div className='ContentLayout'>
        {/* <AddItem/> */}
-        {/* <ItemList/> */}
+       {/*  <ItemList/> */}
         {/* <MealList/> */}
-      <ManageItems/>
+      {/*<ManageItems/>*/}
         {/* <OrderDetails/> */}
     </div>
-   
+
   )
 }
 

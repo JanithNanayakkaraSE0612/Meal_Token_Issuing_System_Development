@@ -35,21 +35,21 @@ const SideMenu = () => {
           icon: <AppstoreOutlined />,
           key: "/",
         },
-        // {
-        //   label: "Inventory",
-        //   key: "/inventory",
-        //   icon: <ShopOutlined />,
-        // },
-        // {
-        //   label: "Orders",
-        //   key: "/orders",
-        //   icon: <ShoppingCartOutlined />,
-        // },
-        // {
-        //   label: "Customers",
-        //   key: "/customers",
-        //   icon: <UserOutlined />,
-        // },
+        {
+          label: "Inventory",
+          key: "/inventory",
+          icon: <ShopOutlined />,
+        },
+        {
+          label: "Orders",
+          key: "/orders",
+          icon: <ShoppingCartOutlined />,
+        },
+        {
+          label: "Customers",
+          key: "/customers",
+          icon: <UserOutlined />,
+        },
       ]}
     ></Menu>
   </div>

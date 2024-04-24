@@ -89,7 +89,7 @@ const OrderDetails = () => {
   />
     </Col>
     <Col span={6} pull={18}>
-  
+
     </Col>
   </Row>
 

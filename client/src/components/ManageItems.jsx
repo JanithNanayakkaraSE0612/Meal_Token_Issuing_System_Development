@@ -71,8 +71,8 @@ const ManageItems = () => {
 
   return (
     <div>
-      <Button type="primary" onClick={() => setVisible(true)}>
-        Create Item
+      <Button className={'clickBtn'} type="primary" onClick={() => setVisible(true)}>
+        Manage Item
       </Button>
       <Table dataSource={items} columns={columns} rowKey="id" />
 
