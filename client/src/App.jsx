@@ -1,37 +1,38 @@
-import React from 'react';
+import React from "react";
 import {
-    ForkOutlined,
-    HomeOutlined, OrderedListOutlined,
-    TagOutlined,
-    UploadOutlined,
-    UserOutlined,
-    VideoCameraOutlined
-} from '@ant-design/icons';
-import { Layout, Menu, theme } from 'antd';
-import ManageItems from './components/ManageItems';
-import CompileMeals from './components/CompileMeals';
-import BrowseMeals from './components/BrowseMeals';
-import ViewItem from './components/ViewItem';
-import ItemDetailsPage from './components/ItemDetailsPage';
-import RedeemPage from './components/RedeemPage';
-import {useLocation, useNavigate} from "react-router-dom";
-import {MdNoMealsOuline} from "react-icons/md";
+  ForkOutlined,
+  HomeOutlined,
+  OrderedListOutlined,
+  TagOutlined,
+  UploadOutlined,
+  UserOutlined,
+  VideoCameraOutlined,
+} from "@ant-design/icons";
+import { Layout, Menu, theme } from "antd";
+import ManageItems from "./components/ManageItems";
+import CompileMeals from "./components/CompileMeals";
+import BrowseMeals from "./components/BrowseMeals";
+import ViewItem from "./components/ViewItem";
+import ItemDetailsPage from "./components/ItemDetailsPage";
+import RedeemPage from "./components/RedeemPage";
+import { useLocation, useNavigate } from "react-router-dom";
+import { MdNoMealsOuline } from "react-icons/md";
 import AppHeader from "./components/AppHeader.jsx";
-import {BiFoodMenu} from "react-icons/bi";
+import { BiFoodMenu } from "react-icons/bi";
 import OrderDetails from "./components/OrderDetails.jsx";
 import Dashboard from "./pages/Dashobard.jsx";
 const { Header, Content, Footer, Sider } = Layout;
-const items = [HomeOutlined, TagOutlined,BiFoodMenu, OrderedListOutlined].map(
+const items = [HomeOutlined, TagOutlined, BiFoodMenu, OrderedListOutlined].map(
   (icon, index) => ({
     key: String(index + 1),
     icon: React.createElement(icon),
     label: `nav`,
   }),
-    (icon, index) => ({
-        key: String(index + 2),
-        icon: React.createElement(icon),
-        label: `n`,
-    }),
+  (icon, index) => ({
+    key: String(index + 2),
+    icon: React.createElement(icon),
+    label: `n`,
+  })
 );
 
 // function SideMenu() {
@@ -98,7 +99,12 @@ const App = () => {
         }}
       >
         <div className="demo-logo-vertical" />
-        <Menu theme="light" mode="inline" defaultSelectedKeys={['4']} items={items} />
+        <Menu
+          theme="light"
+          mode="inline"
+          defaultSelectedKeys={["4"]}
+          items={items}
+        />
       </Sider>
       <Layout>
         <Header
@@ -106,12 +112,10 @@ const App = () => {
             padding: 0,
             background: colorBgContainer,
           }}
-        >
-
-          </Header>
+        ></Header>
         <Content
           style={{
-            margin: '24px 16px 0',
+            margin: "24px 16px 0",
           }}
         >
           <div
@@ -122,22 +126,21 @@ const App = () => {
               borderRadius: borderRadiusLG,
             }}
           >
-              <AppHeader/>
+            <AppHeader />
             {/*<ManageItems/>*/}
-           {/*<CompileMeals/>*/}
-           {/*<BrowseMeals/> */}
-           {/*<ItemDetailsPage/>*/}
-           {/*<RedeemPage/>*/}
-           {/*   <Dashboard/>*/}
-
+            {/*<CompileMeals/>*/}
+            {/*<BrowseMeals/> */}
+            {/*<ItemDetailsPage/>*/}
+            {/*<RedeemPage/>*/}
+            {/*   <Dashboard/>*/}
           </div>
         </Content>
         <Footer
           style={{
-            textAlign: 'center',
+            textAlign: "center",
           }}
         >
-           ©{new Date().getFullYear()} Created by Ant UED
+          ©{new Date().getFullYear()} Created by Ant UED
         </Footer>
       </Layout>
     </Layout>

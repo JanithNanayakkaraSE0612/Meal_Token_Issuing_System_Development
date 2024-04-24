@@ -1,9 +1,9 @@
-import React from 'react';
-import { Card, Row, Col } from 'antd';
+import React from "react";
+import { Card, Row, Col } from "antd";
 
 const ViewItem = ({ item }) => {
   return (
-    <div style={{ padding: '24px' }}>
+    <div style={{ padding: "24px" }}>
       <Row gutter={[16, 16]}>
         <Col xs={24} sm={16} md={12} lg={8} xl={6}>
           <Card

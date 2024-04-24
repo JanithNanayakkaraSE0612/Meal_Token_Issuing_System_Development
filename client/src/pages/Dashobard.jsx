@@ -8,7 +8,7 @@ import {
   SettingOutlined,
 } from '@ant-design/icons';
 import Sidebar from '../components/SideBar.jsx';
-import CustomHeader from '../components/Header.jsx';
+
 import ContentLayout from '../components/ContentLayout.jsx';
 import '../App.css';
 
