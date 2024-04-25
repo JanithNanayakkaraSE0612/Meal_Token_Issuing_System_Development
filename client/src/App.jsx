@@ -26,7 +26,7 @@ const items = [HomeOutlined, TagOutlined, BiFoodMenu, OrderedListOutlined].map(
   (icon, index) => ({
     key: String(index + 1),
     icon: React.createElement(icon),
-    label: `nav`,
+    label: `Dashboard`,
   }),
   (icon, index) => ({
     key: String(index + 2),
@@ -127,7 +127,7 @@ const App = () => {
             }}
           >
             <AppHeader />
-            {/*<ManageItems/>*/}
+            <ManageItems/>
             {/*<CompileMeals/>*/}
             {/*<BrowseMeals/> */}
             {/*<ItemDetailsPage/>*/}
