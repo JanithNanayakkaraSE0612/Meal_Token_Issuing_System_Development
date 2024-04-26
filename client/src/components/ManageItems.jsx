@@ -9,6 +9,15 @@ const ManageItems = () => {
   const [visible, setVisible] = useState(false);
   const [form] = Form.useForm();
 
+  const beforeUpload = (file) => {
+    if (file.type !== 'image/jpeg' && file.type !== 'image/png') {
+      message.error('Only JPG/PNG files are allowed!');
+      return Upload.LIST_IGNORE;
+    }
+    handleImageUpload(file);
+    return false;
+  };
+
   useEffect(() => {
     fetchItems();
   }, []);
@@ -113,7 +122,7 @@ const ManageItems = () => {
         <Form form={form} onFinish={handleCreate}>
           <Form.Item
             label="ID"
-            name="name"
+            name="id"
             rules={[{ required: true, message: "Please enter the name!" }]}
           >
             <Input />
@@ -138,8 +147,8 @@ const ManageItems = () => {
         valuePropName="fileList"
         getValueFromEvent={normFile}
       >
-        <Upload action="/upload.do" listType="picture-card">
-          <button type="button" className="ant-btn ant-btn-primary">
+        <Upload action="/upload.do" listType="picture-card"  beforeUpload={beforeUpload}>
+          <button type="button" className="ant-btn ant-btn-primary" >
             <PlusOutlined /> Upload
           </button>
         </Upload>

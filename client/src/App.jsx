@@ -60,8 +60,8 @@ const App = () => {
             }}
           >
             {/* <AppHeader/> */}
-           {/* <ManageItems/> */}
-          <CompileMeals/>
+           <ManageItems/>
+          {/* <CompileMeals/> */}
           {/* <BrowseMeals/> */}
           {/* <ItemDetailsPage/> */}
           {/* <RedeemPage/> */}

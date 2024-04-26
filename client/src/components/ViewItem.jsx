@@ -12,7 +12,6 @@ const ViewItem = ({ item }) => {
           >
             <p>Price: ${item.price}</p>
             <p>Description: {item.description}</p>
-            {/* Add more item details as needed */}
           </Card>
         </Col>
       </Row>
