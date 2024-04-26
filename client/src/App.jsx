@@ -1,33 +1,22 @@
 import React from 'react';
-import {
-    ForkOutlined,
-    HomeOutlined, OrderedListOutlined,
-    TagOutlined,
-    UploadOutlined,
-    UserOutlined,
-    VideoCameraOutlined
-} from '@ant-design/icons';
-import { Layout, Menu, theme } from 'antd';
+import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
+import { Layout, Menu, theme } from 'antd'
+
 import ManageItems from './components/ManageItems';
-
-import {BiFoodMenu} from "react-icons/bi";
-
+import CompileMeals from './components/CompileMeals';
+import BrowseMeals from './components/BrowseMeals';
+import ViewItem from './components/ViewItem';
+import ItemDetailsPage from './components/ItemDetailsPage';
+import RedeemPage from './components/RedeemPage';
+import AppHeader from './components/AppHeader';
 const { Header, Content, Footer, Sider } = Layout;
-const items = [HomeOutlined, TagOutlined,BiFoodMenu, OrderedListOutlined].map(
+const items = [UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined].map(
   (icon, index) => ({
     key: String(index + 1),
     icon: React.createElement(icon),
-    label: nav,
+    label: `Dashboard ${index+1}`,
   }),
-    (icon, index) => ({
-        key: String(index + 2),
-        icon: React.createElement(icon),
-        label: n,
-    }),
 );
-
-
-
 const App = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -54,7 +43,7 @@ const App = () => {
             background: colorBgContainer,
           }}
         >
-
+            
           </Header>
         <Content
           style={{
@@ -64,18 +53,21 @@ const App = () => {
           <div
             style={{
               padding: 24,
+              // minHeight: 360,
               minHeight: 654,
               background: colorBgContainer,
               borderRadius: borderRadiusLG,
             }}
           >
-              {/* <AppHeader/> */}
-          <ManageItems/>
-          
-
+            {/* <AppHeader/> */}
+           {/* <ManageItems/> */}
+          <CompileMeals/>
+          {/* <BrowseMeals/> */}
+          {/* <ItemDetailsPage/> */}
+          {/* <RedeemPage/> */}
           </div>
         </Content>
-        <Footer
+       <Footer
           style={{
             textAlign: 'center',
           }}

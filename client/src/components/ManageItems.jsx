@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Button, Table, Modal, Form, Input, Space, message } from "antd";
+import { Button, Table, Modal, Form, Input, Space, message ,Upload} from "antd";
+import { PlusOutlined } from '@ant-design/icons';
 import axios from "axios";
+import '../App.css'
 
 const ManageItems = () => {
   const [items, setItems] = useState([]);
@@ -10,6 +12,13 @@ const ManageItems = () => {
   useEffect(() => {
     fetchItems();
   }, []);
+
+  const normFile = (e) => {
+    if (Array.isArray(e)) {
+      return e;
+    }
+    return e?.fileList;
+  };
 
   const fetchItems = async () => {
     try {
@@ -80,9 +89,12 @@ const ManageItems = () => {
 
   return (
     <div>
-      <Button className={'clickBtn'} type="primary" onClick={() => setVisible(true)}>
+      {/* <Button className='clickBtn' type="primary" onClick={() => setVisible(true)}>
         Manage Item
-      </Button>
+      </Button> */}
+      <button className="button" onClick={()=> setVisible(true)}>
+        Create Items
+    </button>
       <Table dataSource={items} columns={columns} rowKey="id" />
 
       <Modal
@@ -100,6 +112,13 @@ const ManageItems = () => {
       >
         <Form form={form} onFinish={handleCreate}>
           <Form.Item
+            label="ID"
+            name="name"
+            rules={[{ required: true, message: "Please enter the name!" }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
             label="Name"
             name="name"
             rules={[{ required: true, message: "Please enter the name!" }]}
@@ -113,6 +132,18 @@ const ManageItems = () => {
           >
             <Input type="number" />
           </Form.Item>
+          <Form.Item
+        label="Upload"
+        name="upload"
+        valuePropName="fileList"
+        getValueFromEvent={normFile}
+      >
+        <Upload action="/upload.do" listType="picture-card">
+          <button type="button" className="ant-btn ant-btn-primary">
+            <PlusOutlined /> Upload
+          </button>
+        </Upload>
+      </Form.Item>
         </Form>
       </Modal>
     </div>

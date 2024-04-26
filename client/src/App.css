@@ -332,12 +332,30 @@ body {
   height: 60px;
 }
 
+/* Media Query for Mobile */
+@media (max-width: 768px) {
+  .button {
+    width: 100%; /* Make the button full width */
+    margin: 0 auto; /* Center the button horizontally */
+    margin-top: 15px; /* Adjust the top margin as needed */
+    margin-left: 0; /* Remove left margin */
+    max-width: 200px; /* Set a maximum width if desired */
+  }
+
+  .button::before {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border-radius: 8px; /* Adjust the border-radius if needed */
+  }
+}
 .button {
-  position: relative;
+  position: fixed;
   width: 120px;
   height: 45px;
-  margin-top: 15px;
-  margin-left: 1580px;
+  margin-top: -5px;
+  margin-left: 1250px;
   background-color: #000;
   display: flex;
   align-items: center;
@@ -349,6 +367,7 @@ body {
   gap: 12px;
   border-radius: 8px;
   cursor: pointer;
+  z-index: 1;
 }
 
 .button::before {
@@ -509,3 +528,5 @@ body {
 /*  margin-top: -180px*/
 
 /*}*/
+
+

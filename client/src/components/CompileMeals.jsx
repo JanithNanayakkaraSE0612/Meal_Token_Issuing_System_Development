@@ -43,7 +43,7 @@ const CompileMeals = () => {
 
   return (
     <div>
-      <Button className={'clickBtn'} type="primary" onClick={() => setVisible(true)}>
+      <Button className='button' type="primary" onClick={() => setVisible(true)}>
         Create Meal
       </Button>
       <Table dataSource={meals} columns={columns} rowKey="id" />
