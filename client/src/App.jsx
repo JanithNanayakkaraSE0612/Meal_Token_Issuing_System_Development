@@ -2,6 +2,7 @@ import React from "react";
 import { Layout } from "antd";
 import { HomeOutlined, TagOutlined, BiFoodMenu, OrderedListOutlined } from "@ant-design/icons";
 import AppHeader from "./components/AppHeader";
+import ManageItems from "./components/ManageItems";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -21,11 +22,11 @@ const App = () => {
       </Sider>
       <Layout>
         <Header style={{ padding: 0 }}>
-          <AppHeader /> {/* Replace Header with AppHeader */}
+          {/* <AppHeader /> Replace Header with AppHeader */}
         </Header>
         <Content style={{ margin: "24px 16px 0" }}>
           <div style={{ padding: 24, minHeight: 654 }}>
-            {/* Content components go here */}
+           <ManageItems/>
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
