@@ -1,22 +1,30 @@
-import React from 'react';
-import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
-import { Layout, Menu, theme } from 'antd'
+import React from "react";
+import {
+  UploadOutlined,
+  UserOutlined,
+  VideoCameraOutlined,
+} from "@ant-design/icons";
+import { Layout, Menu, theme } from "antd";
 
-import ManageItems from './components/ManageItems';
-import CompileMeals from './components/CompileMeals';
-import BrowseMeals from './components/BrowseMeals';
-import ViewItem from './components/ViewItem';
-import ItemDetailsPage from './components/ItemDetailsPage';
-import RedeemPage from './components/RedeemPage';
-import AppHeader from './components/AppHeader';
+import ManageItems from "./components/ManageItems";
+import CompileMeals from "./components/CompileMeals";
+import BrowseMeals from "./components/BrowseMeals";
+import ViewItem from "./components/ViewItem";
+import ItemDetailsPage from "./components/ItemDetailsPage";
+import RedeemPage from "./components/RedeemPage";
+import AppHeader from "./components/AppHeader";
+import MainContent from "./components/MainContent";
 const { Header, Content, Footer, Sider } = Layout;
-const items = [UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined].map(
-  (icon, index) => ({
-    key: String(index + 1),
-    icon: React.createElement(icon),
-    label: `Dashboard ${index+1}`,
-  }),
-);
+const items = [
+  UserOutlined,
+  VideoCameraOutlined,
+  UploadOutlined,
+  UserOutlined,
+].map((icon, index) => ({
+  key: String(index + 1),
+  icon: React.createElement(icon),
+  label: `Dashboard ${index + 1}`,
+}));
 const App = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -34,7 +42,12 @@ const App = () => {
         }}
       >
         <div className="demo-logo-vertical" />
-        <Menu theme="light" mode="inline" defaultSelectedKeys={['4']} items={items} />
+        <Menu
+          theme="light"
+          mode="inline"
+          defaultSelectedKeys={["4"]}
+          items={items}
+        />
       </Sider>
       <Layout>
         <Header
@@ -42,37 +55,35 @@ const App = () => {
             padding: 0,
             background: colorBgContainer,
           }}
-        >
-            
-          </Header>
+        ></Header>
         <Content
           style={{
-            margin: '24px 16px 0',
+            margin: "24px 16px 0",
           }}
         >
           <div
             style={{
               padding: 24,
-              // minHeight: 360,
               minHeight: 654,
               background: colorBgContainer,
               borderRadius: borderRadiusLG,
             }}
           >
+            {/* <MainContent/> */}
             {/* <AppHeader/> */}
-           <ManageItems/>
-          {/* <CompileMeals/> */}
-          {/* <BrowseMeals/> */}
-          {/* <ItemDetailsPage/> */}
-          {/* <RedeemPage/> */}
+            <ManageItems />
+            {/* <CompileMeals/> */}
+            {/* <BrowseMeals/> */}
+            {/* <ItemDetailsPage/> */}
+            {/* <RedeemPage/> */}
           </div>
         </Content>
-       <Footer
+        <Footer
           style={{
-            textAlign: 'center',
+            textAlign: "center",
           }}
         >
-           ©{new Date().getFullYear()} Created by BizSoft Software Solutions
+          ©{new Date().getFullYear()} Created by BizSoft Software Solutions
         </Footer>
       </Layout>
     </Layout>
