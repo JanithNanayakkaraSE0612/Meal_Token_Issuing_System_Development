@@ -87,7 +87,7 @@ const ManageItems = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3001/items/${id}`);
+      await axios.delete(`http://localhost:3000/item/${id}`);
       message.success("Item deleted successfully!");
       fetchItems();
     } catch (error) {
