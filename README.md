@@ -53,7 +53,7 @@ How to do a release and publish modules:
 Clone project repository to your local directory:
 
 ```bash
-git clone git@github.com:ergonode/frontend.git
+git clone git@github.com:JanithNanayakkaraSE0612/Meal_Token_Issuing_System_Development.git
 ```
 
 Install project dependencies:
