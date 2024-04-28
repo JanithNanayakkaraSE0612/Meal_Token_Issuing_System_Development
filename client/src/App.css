@@ -87,60 +87,7 @@ border-top: 1px solid rgba(0, 0, 0, 0.15);
   color: black;
 }
 
-./*logo{
-  color: yellow;
-  margin: 50px 0;
-  font-size: 1.5rem;
-}*/
 
-.menu-bar{
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-weight: 500;
-}
-
-.ant-menu-item-selected{
-  background-color: #FEAF00 !important;
-  color: black !important;
-}
-
-/*button, and color*/
-
-.ant-btn:hover{
-  color: yellow; !important;
-  border-color: yellowgreen !important;
-}
-.ant-btn-primary{
-  background-color: yellow;
-}
-.ant-btn-primary:hover{
-  color: yellow; !important;
-  border-color: white !important;
-}
-.primary--color{
-  color: yellow; !important;
-}
-.primary--light--color{
-  color: greenyellow; !important;
-}
-.secondary--color{
-  color: darkseagreen; !important;
-}
-.light--color{
-  color: darkgrey; !important;
-}
-.gray--color{
-  color: rgba(182, 181, 181) !important;
-}
-
-
-
-/*main content*/
-@charset "UTF-8";
-* {
-  box-sizing: border-box;
-}
 
 body {
   background: #eceef1;
