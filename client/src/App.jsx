@@ -36,12 +36,13 @@ const App = () => {
         }}
       >
         <div className="demo-logo-vertical" />
-        <Menu
-          theme="light"
-          mode="inline"
-          defaultSelectedKeys={["4"]}
-          items={items}
-        />
+        <Menu theme="light" mode="inline" defaultSelectedKeys={["4"]}>
+          {items.map((item) => (
+            <Menu.Item key={item.key} icon={item.icon}>
+              {item.label}
+            </Menu.Item>
+          ))}
+        </Menu>
       </Sider>
       <Layout>
         <Header
