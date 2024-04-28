@@ -85,22 +85,23 @@ const App = () => {
         </Menu>
       </Sider>
       <Layout>
-        <Header
+        <header
           style={{
             padding: 0,
             background: colorBgContainer,
           }}
         >
-          <Flex wrap="wrap">
-            <Flex style={{ marginLeft: "30px" }}>
-              <Image width={40} src={logoImage}></Image>
+          <Flex wrap="wrap" justifyContent="space-between" alignItems="center">
+            <Flex style={{ marginLeft: "20px" }}>
+              <Image width={40} src={logoImage} />
             </Flex>
-            <Typography.Title level={4} style={{ marginLeft: "470px" }}>
-              Eato Token
+            <Typography.Title level={4} style={{ margin: "0 auto" }}>
+              Eato Token Issuing System
             </Typography.Title>
             <Flex
               wrap="wrap"
-              style={{ marginTop: "23px", marginLeft: "200px" }}
+              gap={10}
+              style={{ marginRight: "40px", marginTop: "10px" }}
             >
               <Badge count={comments.length} dot>
                 <MailOutlined
@@ -121,44 +122,44 @@ const App = () => {
                 />
               </Badge>
             </Flex>
-
-            <Drawer
-              title="Comments"
-              open={commentsOpen}
-              onClose={() => {
-                setCommentsOpen(false);
-              }}
-              maskClosable
-            >
-              <List
-                dataSource={comments}
-                renderItem={(item) => {
-                  return <List.Item>{item.body}</List.Item>;
-                }}
-              ></List>
-            </Drawer>
-            <Drawer
-              title="Notifications"
-              open={notificationsOpen}
-              onClose={() => {
-                setNotificationsOpen(false);
-              }}
-              maskClosable
-            >
-              <List
-                dataSource={orders}
-                renderItem={(item) => {
-                  return (
-                    <List.Item>
-                      <Typography.Text strong>{item.title}</Typography.Text> has
-                      been ordered!
-                    </List.Item>
-                  );
-                }}
-              ></List>
-            </Drawer>
           </Flex>
-        </Header>
+
+          <Drawer
+            title="Comments"
+            open={commentsOpen}
+            onClose={() => {
+              setCommentsOpen(false);
+            }}
+            maskClosable
+          >
+            <List
+              dataSource={comments}
+              renderItem={(item) => {
+                return <List.Item>{item.body}</List.Item>;
+              }}
+            />
+          </Drawer>
+          <Drawer
+            title="Notifications"
+            open={notificationsOpen}
+            onClose={() => {
+              setNotificationsOpen(false);
+            }}
+            maskClosable
+          >
+            <List
+              dataSource={orders}
+              renderItem={(item) => {
+                return (
+                  <List.Item>
+                    <Typography.Text strong>{item.title}</Typography.Text> has
+                    been ordered!
+                  </List.Item>
+                );
+              }}
+            />
+          </Drawer>
+        </header>
         <Content
           style={{
             margin: "24px 16px 0",
