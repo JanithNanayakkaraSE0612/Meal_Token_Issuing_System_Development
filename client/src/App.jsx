@@ -6,18 +6,24 @@ import {
   UserOutlined,
   VideoCameraOutlined,
 } from "@ant-design/icons";
-import { Badge, Drawer, Flex, Image, Layout, List, Menu, Typography, theme } from "antd";
+import {
+  Badge,
+  Drawer,
+  Flex,
+  Image,
+  Layout,
+  List,
+  Menu,
+  Typography,
+  theme,
+} from "antd";
 import { useLocation, useNavigate } from "react-router-dom";
 import AppRoute from "./routes/AppRoute";
 import logoImage from "./assets/token.webp";
 import { getComments, getOrders } from "./API";
 const { Header, Content, Footer, Sider } = Layout;
 const items = [UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined];
-// ].map((icon, index) => ({
-//   key: String(index + 1),
-//   icon: React.createElement(icon),
-//   label: `Dashboard ${index + 1}`,
-// }));
+
 const App = () => {
   const [comments, setComments] = useState([]);
   const [orders, setOrders] = useState([]);
@@ -85,60 +91,71 @@ const App = () => {
             background: colorBgContainer,
           }}
         >
-          <Flex wrap="wrap" >
-            <Image style={{marginLeft:"40px"}} width={40} src={logoImage}></Image>
-            <Typography.Title level={4}style={{marginLeft:"420px"}}>Eato Token</Typography.Title>
+          <Flex wrap="wrap">
+            <Image
+              style={{ marginLeft: "40px" }}
+              width={40}
+              src={logoImage}
+            ></Image>
+            <Typography.Title level={4} style={{ marginLeft: "470px" }}>
+              Eato Token
+            </Typography.Title>
+            <Flex wrap="wrap" style={{marginTop:"23px", marginLeft:"230px"}}>
             <Badge count={comments.length} dot>
-        <MailOutlined className={'mailIcon'}
-          style={{ fontSize: 24 }}
-          onClick={() => {
-            setCommentsOpen(true);
-          }}
-        />
-      </Badge>
-      <Badge count={orders.length}>
-        <BellFilled className={'bellIcon'}
-          style={{ fontSize: 24 }}
-          onClick={() => {
-            setNotificationsOpen(true);
-          }}
-        />
-      </Badge>
-      <Drawer
-      title="Comments"
-      open={commentsOpen}
-      onClose={() => {
-        setCommentsOpen(false);
-      }}
-      maskClosable
-    >
-      <List
-        dataSource={comments}
-        renderItem={(item) => {
-          return <List.Item>{item.body}</List.Item>;
-        }}
-      ></List>
-    </Drawer>
-    <Drawer
-      title="Notifications"
-      open={notificationsOpen}
-      onClose={() => {
-        setNotificationsOpen(false);
-      }}
-      maskClosable
-    >
-      <List
-        dataSource={orders}
-        renderItem={(item) => {
-          return (
-            <List.Item>
-              <Typography.Text strong>{item.title}</Typography.Text> has been
-              ordered!
-            </List.Item>
-          );
-        }}
-      ></List>
-    </Drawer>
+              <MailOutlined
+                className={"mailIcon"}
+                style={{ fontSize: 24 }}
+                onClick={() => {
+                  setCommentsOpen(true);
+                }}
+              />
+            </Badge>
+            <Badge count={orders.length}>
+              <BellFilled
+                className={"bellIcon"}
+                style={{ fontSize: 24 }}
+                onClick={() => {
+                  setNotificationsOpen(true);
+                }}
+              />
+            </Badge>
+            </Flex>
+           
+            <Drawer
+              title="Comments"
+              open={commentsOpen}
+              onClose={() => {
+                setCommentsOpen(false);
+              }}
+              maskClosable
+            >
+              <List
+                dataSource={comments}
+                renderItem={(item) => {
+                  return <List.Item>{item.body}</List.Item>;
+                }}
+              ></List>
+            </Drawer>
+            <Drawer
+              title="Notifications"
+              open={notificationsOpen}
+              onClose={() => {
+                setNotificationsOpen(false);
+              }}
+              maskClosable
+            >
+              <List
+                dataSource={orders}
+                renderItem={(item) => {
+                  return (
+                    <List.Item>
+                      <Typography.Text strong>{item.title}</Typography.Text> has
+                      been ordered!
+                    </List.Item>
+                  );
+                }}
+              ></List>
+            </Drawer>
           </Flex>
         </Header>
         <Content
