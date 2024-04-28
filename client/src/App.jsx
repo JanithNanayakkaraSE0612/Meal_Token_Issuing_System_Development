@@ -92,35 +92,36 @@ const App = () => {
           }}
         >
           <Flex wrap="wrap">
-            <Image
-              style={{ marginLeft: "40px" }}
-              width={40}
-              src={logoImage}
-            ></Image>
+            <Flex style={{ marginLeft: "30px" }}>
+              <Image width={40} src={logoImage}></Image>
+            </Flex>
             <Typography.Title level={4} style={{ marginLeft: "470px" }}>
               Eato Token
             </Typography.Title>
-            <Flex wrap="wrap" style={{marginTop:"23px", marginLeft:"230px"}}>
-            <Badge count={comments.length} dot>
-              <MailOutlined
-                className={"mailIcon"}
-                style={{ fontSize: 24 }}
-                onClick={() => {
-                  setCommentsOpen(true);
-                }}
-              />
-            </Badge>
-            <Badge count={orders.length}>
-              <BellFilled
-                className={"bellIcon"}
-                style={{ fontSize: 24 }}
-                onClick={() => {
-                  setNotificationsOpen(true);
-                }}
-              />
-            </Badge>
+            <Flex
+              wrap="wrap"
+              style={{ marginTop: "23px", marginLeft: "200px" }}
+            >
+              <Badge count={comments.length} dot>
+                <MailOutlined
+                  className={"mailIcon"}
+                  style={{ fontSize: 24 }}
+                  onClick={() => {
+                    setCommentsOpen(true);
+                  }}
+                />
+              </Badge>
+              <Badge count={orders.length}>
+                <BellFilled
+                  className={"bellIcon"}
+                  style={{ fontSize: 24 }}
+                  onClick={() => {
+                    setNotificationsOpen(true);
+                  }}
+                />
+              </Badge>
             </Flex>
-           
+
             <Drawer
               title="Comments"
               open={commentsOpen}
