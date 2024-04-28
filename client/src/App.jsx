@@ -6,14 +6,7 @@ import {
 } from "@ant-design/icons";
 import { Layout, Menu, theme } from "antd";
 
-import ManageItems from "./components/ManageItems";
-import CompileMeals from "./components/CompileMeals";
-import BrowseMeals from "./components/BrowseMeals";
-import ViewItem from "./components/ViewItem";
-import ItemDetailsPage from "./components/ItemDetailsPage";
-import RedeemPage from "./components/RedeemPage";
-import AppHeader from "./components/AppHeader";
-import MainContent from "./components/MainContent";
+import AppRoute from "./routes/AppRoute";
 const { Header, Content, Footer, Sider } = Layout;
 const items = [
   UserOutlined,
@@ -29,10 +22,10 @@ const App = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
- 
+
   return (
     <Layout>
-      <Sider 
+      <Sider
         breakpoint="lg"
         collapsedWidth="0"
         onBreakpoint={(broken) => {
@@ -70,14 +63,7 @@ const App = () => {
               borderRadius: borderRadiusLG,
             }}
           >
-            {/* <MainContent/> */}
-            {/* <AppHeader/> */}
-            {/* <ManageItems /> */}
-            {/* <CompileMeals/> */}
-            <BrowseMeals/>
-            {/* <ItemDetailsPage/> */}
-            {/* <RedeemPage/> */}
-          
+            <AppRoute />
           </div>
         </Content>
         <Footer
