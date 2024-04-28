@@ -13,12 +13,11 @@ const items = [
   VideoCameraOutlined,
   UploadOutlined,
   UserOutlined,
-]
-// ].map((icon, index) => ({
-//   key: String(index + 1),
-//   icon: React.createElement(icon),
-//   label: `Dashboard ${index + 1}`,
-// }));
+].map((icon, index) => ({
+  key: String(index + 1),
+  icon: React.createElement(icon),
+  label: `Dashboard ${index + 1}`,
+}));
 const App = () => {
   // const location = useLocation();
   // const [selectedKeys , setSelectedKeys] = useState("/");
@@ -34,7 +33,7 @@ const App = () => {
   } = theme.useToken();
 
   return (
-    <Layout style={{minHeight:"100vh"}}>
+    <Layout style={{minHeight:""}}>
       <Sider
         breakpoint="lg"
         collapsedWidth="0"
