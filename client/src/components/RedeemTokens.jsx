@@ -1,17 +1,27 @@
 import React, { useState } from "react";
 import { Form, Input, Button, message } from "antd";
+import axios from "axios"; // Import Axios
 import "../App.css";
 
 const RedeemTokens = () => {
   const [form] = Form.useForm();
   const [redeemed, setRedeemed] = useState(false);
 
-  const onFinish = (values) => {
-    // Simulate token redemption logic (replace with actual logic)
-    console.log("Received values:", values);
-    setRedeemed(true);
-    form.resetFields();
-    message.success("Token redeemed successfully!");
+  const onFinish = async (values) => {
+    try {
+      // Make the API call using Axios
+      const response = await axios.post("https://your-api-endpoint.com/redeem", values);
+      
+      // Handle successful response
+      console.log("Response:", response.data);
+      setRedeemed(true);
+      form.resetFields();
+      message.success("Token redeemed successfully!");
+    } catch (error) {
+      // Handle errors
+      console.error("Error:", error);
+      message.error("Failed to redeem token. Please try again.");
+    }
   };
 
   return (
