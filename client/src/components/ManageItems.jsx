@@ -1,8 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Button, Table, Modal, Form, Input, Space, message ,Upload} from "antd";
-import { PlusOutlined } from '@ant-design/icons';
+import {
+  Button,
+  Table,
+  Modal,
+  Form,
+  Input,
+  Space,
+  message,
+  Upload,
+} from "antd";
+import { PlusOutlined } from "@ant-design/icons";
 import axios from "axios";
-import '../App.css'
+import "../App.css";
 
 const ManageItems = () => {
   const [items, setItems] = useState([]);
@@ -10,8 +19,8 @@ const ManageItems = () => {
   const [form] = Form.useForm();
 
   const beforeUpload = (file) => {
-    if (file.type !== 'image/jpeg' && file.type !== 'image/png') {
-      message.error('Only JPG/PNG files are allowed!');
+    if (file.type !== "image/jpeg" && file.type !== "image/png") {
+      message.error("Only JPG/PNG files are allowed!");
       return Upload.LIST_IGNORE;
     }
     handleImageUpload(file);
@@ -101,9 +110,9 @@ const ManageItems = () => {
       {/* <Button className='clickBtn' type="primary" onClick={() => setVisible(true)}>
         Manage Item
       </Button> */}
-      <button className="button" onClick={()=> setVisible(true)}>
+      <button className="button" onClick={() => setVisible(true)}>
         Create Items
-    </button>
+      </button>
       <Table dataSource={items} columns={columns} rowKey="id" />
 
       <Modal
@@ -142,17 +151,21 @@ const ManageItems = () => {
             <Input type="number" />
           </Form.Item>
           <Form.Item
-        label="Upload"
-        name="upload"
-        valuePropName="fileList"
-        getValueFromEvent={normFile}
-      >
-        <Upload action="/upload.do" listType="picture-card"  beforeUpload={beforeUpload}>
-          <button type="button" className="ant-btn ant-btn-primary" >
-            <PlusOutlined /> Upload
-          </button>
-        </Upload>
-      </Form.Item>
+            label="Upload"
+            name="upload"
+            valuePropName="fileList"
+            getValueFromEvent={normFile}
+          >
+            <Upload
+              action="/upload.do"
+              listType="picture-card"
+              beforeUpload={beforeUpload}
+            >
+              <button type="button" className="ant-btn ant-btn-primary">
+                <PlusOutlined /> Upload
+              </button>
+            </Upload>
+          </Form.Item>
         </Form>
       </Modal>
     </div>
