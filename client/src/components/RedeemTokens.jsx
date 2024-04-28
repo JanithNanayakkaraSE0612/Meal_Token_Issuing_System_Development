@@ -10,8 +10,11 @@ const RedeemTokens = () => {
   const onFinish = async (values) => {
     try {
       // Make the API call using Axios
-      const response = await axios.post("https://your-api-endpoint.com/redeem", values);
-      
+      const response = await axios.post(
+        "https://your-api-endpoint.com/redeem",
+        values
+      );
+
       // Handle successful response
       console.log("Response:", response.data);
       setRedeemed(true);

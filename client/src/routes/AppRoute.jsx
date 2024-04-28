@@ -5,6 +5,7 @@ import CompileMeals from "../components/CompileMeals";
 import RedeemPage from "../components/RedeemPage";
 import ItemDetailsPage from "../components/ItemDetailsPage";
 import Dashboard from "../pages/Dashboard";
+import BrowseMeals from "../components/BrowseMeals";
 
 const AppRoute = () => {
   return (
@@ -15,6 +16,7 @@ const AppRoute = () => {
         <Route path="/compileMeals" element={<CompileMeals />}></Route>
         <Route path="/token" element={<RedeemPage />}></Route>
         <Route path="/itemDetails" element={<ItemDetailsPage />}></Route>
+        <Route path="/browseMeal" element={<BrowseMeals />}></Route>
       </Routes>
     </BrowserRouter>
   );
