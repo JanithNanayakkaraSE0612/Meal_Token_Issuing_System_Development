@@ -1,5 +1,6 @@
 # Meal_Token_Issuing_System_Development
- project focused on the development of a Meal Token Issuing System for EatoToken, aimed at streamlining meal orders and digital token issuance. This is a crucial component of our innovative service, designed to enhance the dining experience for users.Designing a user-friendly interface using React, ViteJS, and Ant Design. Developing the backend with NestJS, incorporating PostgreSQL and TypeORM. Implementing CRUD operations for the Item entity, and Create and View functionalities for Meals. Integrating Firebase for image uploads.
+
+project focused on the development of a Meal Token Issuing System for EatoToken, aimed at streamlining meal orders and digital token issuance. This is a crucial component of our innovative service, designed to enhance the dining experience for users.Designing a user-friendly interface using React, ViteJS, and Ant Design. Developing the backend with NestJS, incorporating PostgreSQL and TypeORM. Implementing CRUD operations for the Item entity, and Create and View functionalities for Meals. Integrating Firebase for image uploads.
 
 <!--
 How to do a release and publish modules:
@@ -21,7 +22,6 @@ How to do a release and publish modules:
 7. Merge master branch to develop branch.
 
  -->
-
 
 <p align="center">
   <a href="https://ergonode.com">
@@ -67,7 +67,8 @@ Set your local `.env` file:
 ```bash
 npm run env
 ```
-> *You may want to override created .env file by other settings*
+
+> _You may want to override created .env file by other settings_
 
 **2) Module configuration**
 
@@ -78,13 +79,15 @@ npm run modules
 ```
 
 You might want automatically setup all modules by executing command:
+
 ```bash
 npm run modules:all
 ```
+
 > All available modules can be found in the `package.json` file in the `_availableModules` section, and required modules in the `_requiredModules` section.
 
 > The `_availableModules` is an object where the key is the module name and the value is the module type.
-The `local` type defines local modules located in the `modules` directory, and the `npm` type defines modules hosted on npm.
+> The `local` type defines local modules located in the `modules` directory, and the `npm` type defines modules hosted on npm.
 
 **3) Build**
 
@@ -101,7 +104,7 @@ npm run build
 npm run start
 ```
 
-> *After you set up [backend application][backend] and generated default fixtures you may login into application with credentials `test@ergonode.com`, password: `abcd1234`*
+> _After you set up [backend application][backend] and generated default fixtures you may login into application with credentials `test@ergonode.com`, password: `abcd1234`_
 
 **4) Docker**
 
@@ -114,7 +117,7 @@ On other browsers some functionalities may not work as intended.
 
 ## Documentation
 
-The project is in early stage and we have got a lot of milestones to develop.  We do our best to deliver great documentation, but - to be honest -  it is the hardest thing in open-source projects :)
+The project is in early stage and we have got a lot of milestones to develop. We do our best to deliver great documentation, but - to be honest - it is the hardest thing in open-source projects :)
 
 **Please find out what we've already prepared on [devs.ergonode.com][docs]**
 
@@ -137,6 +140,7 @@ If you have any questions or ideas feel free to join our [slack][slack].
 ## Is it production ready
 
 Yes!
+
 ## Contributing
 
 Before you start making any pull requests checkout our [contribution guide][contribut]. If you have any questions or ideas feel free to join our [slack][slack] or send us an email: team@ergonode.com
