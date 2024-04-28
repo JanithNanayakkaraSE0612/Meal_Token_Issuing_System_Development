@@ -85,7 +85,7 @@ function Dashboard() {
   return (
     <Space size={20} direction="vertical" style={{ width: "100%" }}>
       <Typography.Title level={4}>Dashboard</Typography.Title>
-      <Flex wrap="wrap" gap="middle"  style={{width:"100%"}}>
+      <Flex wrap="wrap" gap="middle" style={{ width: "100%" }}>
         <DashboardCard
           icon={<ShoppingCartOutlined className="icon-green" />}
           title={"Orders"}
@@ -107,22 +107,22 @@ function Dashboard() {
           value={revenue}
         />
       </Flex>
-      <Typography.Text >Recent Orders</Typography.Text>
+      <Typography.Text>Recent Orders</Typography.Text>
       <Flex wrap="wrap" gap="large">
-     
-      <Table style={{ width: "40%" }}
-        columns={[
-          { title: "Title", dataIndex: "title" },
-          { title: "Quantity", dataIndex: "quantity" },
-          { title: "Price", dataIndex: "discountedPrice" },
-        ]}
-        loading={loading}
-        dataSource={dataSource}
-        pagination={false}
-      />
-      <Card style={{ width: "40%" }}>
-        <Bar options={options} data={reveneuData} />
-      </Card>
+        <Table
+          style={{ width: "40%" }}
+          columns={[
+            { title: "Title", dataIndex: "title" },
+            { title: "Quantity", dataIndex: "quantity" },
+            { title: "Price", dataIndex: "discountedPrice" },
+          ]}
+          loading={loading}
+          dataSource={dataSource}
+          pagination={false}
+        />
+        <Card style={{ width: "40%" }}>
+          <Bar options={options} data={reveneuData} />
+        </Card>
       </Flex>
     </Space>
   );
@@ -131,7 +131,10 @@ function Dashboard() {
 function DashboardCard({ title, value, icon }) {
   return (
     <Card>
-      <Space direction="horizontal" style={{width:"280px",position:"static"}}>
+      <Space
+        direction="horizontal"
+        style={{ width: "280px", position: "static" }}
+      >
         {icon}
         <Statistic title={title} value={value} />
       </Space>
