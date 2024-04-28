@@ -29,9 +29,10 @@ const App = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+ 
   return (
     <Layout>
-      <Sider
+      <Sider 
         breakpoint="lg"
         collapsedWidth="0"
         onBreakpoint={(broken) => {
@@ -71,11 +72,12 @@ const App = () => {
           >
             {/* <MainContent/> */}
             {/* <AppHeader/> */}
-            <ManageItems />
+            {/* <ManageItems /> */}
             {/* <CompileMeals/> */}
-            {/* <BrowseMeals/> */}
+            <BrowseMeals/>
             {/* <ItemDetailsPage/> */}
             {/* <RedeemPage/> */}
+          
           </div>
         </Content>
         <Footer
