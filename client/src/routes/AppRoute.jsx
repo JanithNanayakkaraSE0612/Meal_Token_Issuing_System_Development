@@ -4,12 +4,14 @@ import ManageItems from '../components/ManageItems'
 import CompileMeals from '../components/CompileMeals'
 import RedeemPage from '../components/RedeemPage'
 import ItemDetailsPage from '../components/ItemDetailsPage'
+import Dashboard from '../pages/Dashboard'
 
 
 const AppRoute = () => {
   return (
     <BrowserRouter>
     <Routes>
+    <Route path="/" element={<Dashboard/>}></Route>
     <Route path="/manageItems" element={<ManageItems/>}></Route>
     <Route path="/compileMeals" element={<CompileMeals />}></Route>
     <Route path="/token" element={<RedeemPage/>}></Route>
