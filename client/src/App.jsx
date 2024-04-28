@@ -13,11 +13,12 @@ const items = [
   VideoCameraOutlined,
   UploadOutlined,
   UserOutlined,
-].map((icon, index) => ({
-  key: String(index + 1),
-  icon: React.createElement(icon),
-  label: `Dashboard ${index + 1}`,
-}));
+]
+// ].map((icon, index) => ({
+//   key: String(index + 1),
+//   icon: React.createElement(icon),
+//   label: `Dashboard ${index + 1}`,
+// }));
 const App = () => {
   // const location = useLocation();
   // const [selectedKeys , setSelectedKeys] = useState("/");
@@ -45,12 +46,17 @@ const App = () => {
         }}
       >
         <div className="demo-logo-vertical  " />
-        <Menu theme="light" mode="inline" style={{ minHeight: "100vh" }} defaultSelectedKeys={["4"]}>
-          {items.map((item) => (
+        <Menu theme="light" mode="inline" style={{ minHeight: "100vh" }} defaultSelectedKeys={["4"]}
+        items={[{label:"Dashobard"},
+        {label:"ManageItems"},
+        {label:"CompileMeals"},
+        {label:"Token"},
+        {label:"View Item Details"}]}>
+          {/* {items.map((item) => (
             <Menu.Item key={item.key} icon={item.icon}>
               {item.label}
             </Menu.Item>
-          ))}
+          ))} */}
         </Menu>
       
       </Sider>
