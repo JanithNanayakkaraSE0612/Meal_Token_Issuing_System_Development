@@ -14,5 +14,5 @@ const ItemDetailsPage = () => {
 
   return <ViewItem item={item} />;
 };
-
+0
 export default ItemDetailsPage;
