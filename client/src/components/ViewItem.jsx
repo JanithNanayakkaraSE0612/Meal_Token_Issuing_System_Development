@@ -1,7 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Card, Row, Col } from "antd";
+import axios from "axios";
 
-const ViewItem = ({ item }) => {
+const ViewItem = ({ itemId }) => {
+  const [item, setItem] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetchItemData();
+  }, []);
+
+  const fetchItemData = async () => {
+    try {
+      const response = await axios.get(`http://localhost:3001/items/${itemId}`);
+      setItem(response.data);
+    } catch (error) {
+      console.error("Error fetching item data:", error);
+      setError("Failed to fetch item data.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
+
+  if (!item) {
+    return <p>No item data available.</p>;
+  }
+
   return (
     <div style={{ padding: "24px" }}>
       <Row gutter={[16, 16]}>

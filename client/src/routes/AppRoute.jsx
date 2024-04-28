@@ -6,6 +6,7 @@ import RedeemPage from "../components/RedeemPage";
 import ItemDetailsPage from "../components/ItemDetailsPage";
 import Dashboard from "../pages/Dashboard";
 import BrowseMeals from "../components/BrowseMeals";
+import ViewItem from "../components/ViewItem";
 
 const AppRoute = () => {
   return (
@@ -17,6 +18,7 @@ const AppRoute = () => {
         <Route path="/token" element={<RedeemPage />}></Route>
         <Route path="/itemDetails" element={<ItemDetailsPage />}></Route>
         <Route path="/browseMeal" element={<BrowseMeals />}></Route>
+        <Route path="/viewItem" element={<ViewItem />}></Route>
       </Routes>
     </BrowserRouter>
   );
