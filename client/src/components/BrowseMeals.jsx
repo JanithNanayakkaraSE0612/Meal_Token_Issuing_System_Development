@@ -14,7 +14,7 @@ const BrowseMeals = () => {
   const fetchMeals = async () => {
     setLoading(true); // Set loading state to true before API call
     try {
-      const response = await axios.get("http://localhost:3001/meals");
+      const response = await axios.get("http://localhost:3000/meal");
       setMeals(response.data);
     } catch (error) {
       setError("Error fetching meals. Please try again."); // Set error state if API call fails

@@ -52,7 +52,7 @@ const App = () => {
   } = theme.useToken();
 
   return (
-    <Layout style={{ minHeight: "" }}>
+    <Layout style={{ minHeight: "100vh" }}>
       <Sider
         breakpoint="lg"
         collapsedWidth="0"

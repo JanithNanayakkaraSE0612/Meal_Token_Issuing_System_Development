@@ -23,7 +23,7 @@ const CompileMeals = () => {
 
   const handleCreate = async (values) => {
     try {
-      await axios.post("http://localhost:3001/meals", values);
+      await axios.post("http://localhost:3000/meal", values);
       message.success("Meal created successfully!");
       setVisible(false);
       form.resetFields();

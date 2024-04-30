@@ -1,4 +1,4 @@
-# Meal_Token_Issuing_System_Development
+# Meal_Token_Issuing_System_Development FrontEnd
 
 project focused on the development of a Meal Token Issuing System for EatoToken, aimed at streamlining meal orders and digital token issuance. This is a crucial component of our innovative service, designed to enhance the dining experience for users.Designing a user-friendly interface using React, ViteJS, and Ant Design. Developing the backend with NestJS, incorporating PostgreSQL and TypeORM. Implementing CRUD operations for the Item entity, and Create and View functionalities for Meals. Integrating Firebase for image uploads.
 
@@ -22,6 +22,63 @@ How to do a release and publish modules:
 7. Merge master branch to develop branch.
 
  -->
+
+EatoToken Meal Token Issuing System
+Overview
+This repository contains the codebase for the EatoToken meal token issuing system. The system manages a database of meal items, compiles meals from these items, and issues tokens that can be redeemed for meals. It includes a frontend interface built with React and ViteJS, utilizing Ant Design for UI components, and a backend system for managing meal items and user interactions.
+
+Entities and Relationships
+The system works with three primary entities:
+
+Item
+Attributes: id (number), price (number), name (string), picture (string URL).
+Meal
+Attributes: id (number), token (string), totalPrice (number).
+ItemInMeal
+Attributes: id (number), mealId (reference to Meal), itemId (reference to Item), price (number).
+Features
+Frontend
+User Interface: Design intuitive screens for browsing meals, viewing item details, and redeeming meal tokens.
+CRUD Operations: Implement CRUD operations for managing Item entities, allowing users to create, read, update, and delete items.
+Meal Management: Create and view meals, providing an easy-to-use interface for admins to manage meal items and compile meals.
+Ant Design Components: Utilize Ant Design components for a consistent and modern UI design.
+Backend
+Database Management: Handle the storage and retrieval of meal items, meals, and their relationships.
+User Interaction: Manage user interactions, token issuance, and meal redemption.
+Firebase Integration: Integrate Firebase storage for uploading item pictures, storing accessible paths in the backend.
+Image Upload Feature
+Firebase Storage: Implement a feature to upload images of meal items to Firebase storage.
+URL Storage: Retrieve image URLs from Firebase to be stored in the backend for item pictures.
+Getting Started
+Clone the repository:
+bash
+Copy code
+git clone https://github.com/username/repo-name.git
+Install dependencies for both frontend and backend:
+bash
+Copy code
+cd frontend
+npm install
+
+cd ../backend
+npm install
+Set up Firebase for image storage and update Firebase configuration in the backend.
+Start the frontend and backend servers:
+bash
+Copy code
+cd frontend
+npm run dev
+
+cd ../backend
+npm start
+Access the frontend interface at http://localhost:3000 and begin using the EatoToken meal token issuing system.
+Contributing
+Contributions are welcome! Please follow the guidelines in CONTRIBUTING.md to contribute to this project.
+
+License
+This project is licensed under the MIT License.
+
+
 
 <p align="center">
   <a href="https://ergonode.com">

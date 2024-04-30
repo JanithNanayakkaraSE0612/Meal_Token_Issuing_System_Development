@@ -40,7 +40,7 @@ const ManageItems = () => {
 
   const fetchItems = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/items");
+      const response = await axios.get("http://localhost:3000/item");
       setItems(response.data);
     } catch (error) {
       console.error("Error fetching items:", error);
@@ -49,7 +49,7 @@ const ManageItems = () => {
 
   const handleCreate = async (values) => {
     try {
-      await axios.post("http://localhost:3001/items", values);
+      await axios.post("http://localhost:3000/item", values);
       message.success("Item created successfully!");
       setVisible(false);
       form.resetFields();
@@ -129,13 +129,13 @@ const ManageItems = () => {
         ]}
       >
         <Form form={form} onFinish={handleCreate}>
-          <Form.Item
+          {/* <Form.Item
             label="ID"
             name="id"
             rules={[{ required: true, message: "Please enter the name!" }]}
           >
             <Input />
-          </Form.Item>
+          </Form.Item> */}
           <Form.Item
             label="Name"
             name="name"
