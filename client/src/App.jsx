@@ -38,15 +38,7 @@ const App = () => {
       setOrders(res.products);
     });
   }, []);
-  // const location = useLocation();
-  // const [selectedKeys , setSelectedKeys] = useState("/");
 
-  // useEffect(() =>{
-  //   const pathName = location.pathname;
-  //   setSelectedKeys(pathName);
-  // },[location.pathname]);
-
-  // const navigate = useNavigate();
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -68,21 +60,19 @@ const App = () => {
           theme="light"
           mode="inline"
           style={{ minHeight: "100vh" }}
-          defaultSelectedKeys={["4"]}
+          defaultSelectedKeys={["6"]}
           items={[
-            { label: <Link to={"/"}>{"Dashboard"}</Link>},
-            { label: <Link to={"/manageItems"}>{"ManageItems"}</Link>},
-            { label: <Link to={"/CompileMeals"}>{"CompileMeals"}</Link>},
+            { label: <Link to={"/"}>{"Dashboard"}</Link> },
+            { label: <Link to={"/manageItems"}>{"ManageItems"}</Link> },
+            { label: <Link to={"/CompileMeals"}>{"CompileMeals"}</Link> },
             { label: <Link to={"/token"}>{"Token"}</Link> },
-            { label: <Link to={"/View Item Details"}>{"View Item Details"}</Link>},
+            {
+              label: (
+                <Link to={"/View Item Details"}>{"View Item Details"}</Link>
+              ),
+            },
           ]}
-        >
-          {/* {items.map((item) => (
-            <Menu.Item key={item.key} icon={item.icon}>
-              {item.label}
-            </Menu.Item>
-          ))} */}
-        </Menu>
+        ></Menu>
       </Sider>
       <Layout>
         <header
