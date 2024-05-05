@@ -17,7 +17,6 @@ import {
   Typography,
   theme,
 } from "antd";
-import { useLocation, useNavigate } from "react-router-dom";
 import AppRoute from "./routes/AppRoute";
 import logoImage from "./assets/token.webp";
 import { getComments, getOrders } from "./API";
