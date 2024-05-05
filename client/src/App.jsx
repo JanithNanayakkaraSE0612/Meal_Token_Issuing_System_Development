@@ -20,6 +20,7 @@ import {
 import AppRoute from "./routes/AppRoute";
 import logoImage from "./assets/token.webp";
 import { getComments, getOrders } from "./API";
+import { Link } from "react-router-dom";
 const { Header, Content, Footer, Sider } = Layout;
 const items = [UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined];
 
@@ -69,11 +70,11 @@ const App = () => {
           style={{ minHeight: "100vh" }}
           defaultSelectedKeys={["4"]}
           items={[
-            { label: "Dashobard" },
-            { label: "ManageItems" },
-            { label: "CompileMeals" },
-            { label: "Token" },
-            { label: "View Item Details" },
+            { label: <Link to={"/"}>{"Dashboard"}</Link>},
+            { label: <Link to={"/manageItems"}>{"ManageItems"}</Link>},
+            { label: <Link to={"/CompileMeals"}>{"CompileMeals"}</Link>},
+            { label: <Link to={"/token"}>{"Token"}</Link> },
+            { label: <Link to={"/View Item Details"}>{"View Item Details"}</Link>},
           ]}
         >
           {/* {items.map((item) => (
