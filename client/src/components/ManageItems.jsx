@@ -40,7 +40,8 @@ const ManageItems = () => {
 
   const fetchItems = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/item");
+    const response = await axios.get("http://localhost:3000/item");
+      console.log("Response data:", response.data); // Log the data received
       setItems(response.data);
     } catch (error) {
       console.error("Error fetching items:", error);
@@ -79,16 +80,7 @@ const ManageItems = () => {
       ),
     },
   ];
-  // const handleUpdateItem = async (id) => {
-  //   try {
-  //     const response = await axios.put(`${updateUrl}/${id}`, updateData); // Include ID if needed
-  //     console.log("Item updated successfully:", response.data);
-  //     // Optionally, refetch data to update the table
-  //     fetchData();
-  //   } catch (error) {
-  //     console.error("Error updating item:", error);
-  //   }
-  // };
+
   const handleEdit = (record) => {
     // Implement edit functionality
     console.log("Edit item:", record);
@@ -107,9 +99,6 @@ const ManageItems = () => {
 
   return (
     <div>
-      {/* <Button className='clickBtn' type="primary" onClick={() => setVisible(true)}>
-        Manage Item
-      </Button> */}
       <button className="button" onClick={() => setVisible(true)}>
         Create Items
       </button>
@@ -129,13 +118,6 @@ const ManageItems = () => {
         ]}
       >
         <Form form={form} onFinish={handleCreate}>
-          {/* <Form.Item
-            label="ID"
-            name="id"
-            rules={[{ required: true, message: "Please enter the name!" }]}
-          >
-            <Input />
-          </Form.Item> */}
           <Form.Item
             label="Name"
             name="name"
