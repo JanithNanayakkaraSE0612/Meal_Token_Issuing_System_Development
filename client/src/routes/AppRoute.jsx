@@ -10,7 +10,7 @@ import ViewItem from "../components/ViewItem";
 
 const AppRoute = () => {
   return (
-    <BrowserRouter>
+    
       <Routes>
         <Route path="/" element={<Dashboard />}></Route>
         <Route path="/manageItems" element={<ManageItems />}></Route>
@@ -20,7 +20,7 @@ const AppRoute = () => {
         <Route path="/browseMeal" element={<BrowseMeals />}></Route>
         <Route path="/viewItem" element={<ViewItem />}></Route>
       </Routes>
-    </BrowserRouter>
+    
   );
 };
 
