@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from "react";
-import {
-  Button,
-  Table,
-  Modal,
-  Form,
-  Input,
-  Space,
-  message,
-  Upload,
-} from "antd";
+import { Button, Table, Modal, Form, Input, Space, message, Upload } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import axios from "axios";
+import { initializeApp } from "firebase/app";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import "../App.css";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDFq8wtK0Cisnq5K8VNJIgJSkGsnV_PpSw",
+  authDomain: "image-upload-1c651.firebaseapp.com",
+  projectId: "image-upload-1c651",
+  storageBucket: "image-upload-1c651.appspot.com",
+  messagingSenderId: "201296211009",
+  appId: "1:201296211009:web:b798d3297c7748e7b92ac0",
+  measurementId: "G-YNY9SBYJVH"
+};
+
+initializeApp(firebaseConfig);
 
 const ManageItems = () => {
   const [items, setItems] = useState([]);
@@ -23,25 +28,25 @@ const ManageItems = () => {
       message.error("Only JPG/PNG files are allowed!");
       return Upload.LIST_IGNORE;
     }
-    handleImageUpload(file);
+    handleImageUpload(file); // Handle Firebase upload
     return false;
+  };
+
+  const handleImageUpload = async (file) => {
+    const storage = getStorage();
+    const storageRef = ref(storage, `images/${file.name}`);
+    await uploadBytes(storageRef, file);
+    const downloadURL = await getDownloadURL(storageRef);
+    form.setFieldsValue({ upload: [{ url: downloadURL }] });
   };
 
   useEffect(() => {
     fetchItems();
   }, []);
 
-  const normFile = (e) => {
-    if (Array.isArray(e)) {
-      return e;
-    }
-    return e?.fileList;
-  };
-
   const fetchItems = async () => {
     try {
-    const response = await axios.get("http://localhost:3000/item");
-      console.log("Response data:", response.data); // Log the data received
+      const response = await axios.get("http://localhost:3001/item");
       setItems(response.data);
     } catch (error) {
       console.error("Error fetching items:", error);
@@ -50,15 +55,26 @@ const ManageItems = () => {
 
   const handleCreate = async (values) => {
     try {
-      await axios.post("http://localhost:3000/item", values);
-      message.success("Item created successfully!");
-      setVisible(false);
-      form.resetFields();
-      fetchItems();
+      const response = await axios.post("http://localhost:3000/item", values);
+      if (response.status === 200) {
+        message.success("Item created successfully!");
+        setVisible(false);
+        form.resetFields();
+        fetchItems();
+      } else {
+        throw new Error("Unexpected status code: " + response.status);
+      }
     } catch (error) {
       console.error("Error creating item:", error);
-      message.error("Failed to create item.");
+      message.error("Failed to create item. Please check the data and try again.");
     }
+  };
+
+  const normFile = (e) => {
+    if (Array.isArray(e)) {
+      return e;
+    }
+    return e?.fileList;
   };
 
   const columns = [
@@ -82,7 +98,6 @@ const ManageItems = () => {
   ];
 
   const handleEdit = (record) => {
-    // Implement edit functionality
     console.log("Edit item:", record);
   };
 
@@ -99,9 +114,9 @@ const ManageItems = () => {
 
   return (
     <div>
-      <button className="button" onClick={() => setVisible(true)}>
-        Create Items
-      </button>
+      <Button className="button" onClick={() => setVisible(true)}>
+        Create Item
+      </Button>
       <Table dataSource={items} columns={columns} rowKey="id" />
 
       <Modal
@@ -128,7 +143,10 @@ const ManageItems = () => {
           <Form.Item
             label="Price"
             name="price"
-            rules={[{ required: true, message: "Please enter the price!" }]}
+            rules={[
+              { required: true, message: "Please enter the price!" },
+              // { type: "number", message: "Price must be a number!" },
+            ]}
           >
             <Input type="number" />
           </Form.Item>
@@ -136,16 +154,16 @@ const ManageItems = () => {
             label="Upload"
             name="upload"
             valuePropName="fileList"
-            getValueFromEvent={normFile}
+            getValueFromEvent={normFile} // Integrated normFile function here
           >
             <Upload
               action="/upload.do"
               listType="picture-card"
               beforeUpload={beforeUpload}
             >
-              <button type="button" className="ant-btn ant-btn-primary">
+              <Button>
                 <PlusOutlined /> Upload
-              </button>
+              </Button>
             </Upload>
           </Form.Item>
         </Form>
