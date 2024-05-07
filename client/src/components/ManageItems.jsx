@@ -56,7 +56,11 @@ const ManageItems = () => {
   const fetchItems = async () => {
     try {
       const response = await axios.get("https://eato.onrender.com/item");
-      setItems(response.data); // Assuming response.data is an array
+      if (Array.isArray(response.data)) {
+        setItems(response.data);
+      } else {
+        console.error("Data received is not an array:", response.data);
+      }
     } catch (error) {
       console.error("Error fetching items:", error);
     }
