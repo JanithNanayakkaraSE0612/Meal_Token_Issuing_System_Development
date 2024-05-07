@@ -56,10 +56,11 @@ const ManageItems = () => {
   const fetchItems = async () => {
     try {
       const response = await axios.get("https://eato.onrender.com/item");
-      if (Array.isArray(response.data)) {
-        setItems(response.data);
+      const responseData = response.data.data; // Extract data array from response
+      if (Array.isArray(responseData)) {
+        setItems(responseData);
       } else {
-        console.error("Data received is not an array:", response.data);
+        console.error("Data received is not an array:", responseData);
       }
     } catch (error) {
       console.error("Error fetching items:", error);
@@ -67,15 +68,16 @@ const ManageItems = () => {
   };
   const handleCreate = async (values) => {
     try {
-      const response = await axios.post(
-        "https://eato.onrender.com/item",
-        values
-      );
+      const response = await axios.post("https://eato.onrender.com/item", {
+        name: values.name,
+        price: values.price,
+        picture: values.upload[0].url, // Assuming 'upload' is the key for the uploaded picture URL
+      });
       if (response.status === 200) {
         message.success("Item created successfully!");
         setVisible(false);
         form.resetFields();
-        fetchItems();
+        fetchItems(); // Update the item list after creating a new item
       } else {
         throw new Error("Unexpected status code: " + response.status);
       }
@@ -86,6 +88,28 @@ const ManageItems = () => {
       );
     }
   };
+  
+  // const handleCreate = async (values) => {
+  //   try {
+  //     const response = await axios.post(
+  //       "https://eato.onrender.com/item",
+  //       values
+  //     );
+  //     if (response.status === 200) {
+  //       message.success("Item created successfully!");
+  //       setVisible(false);
+  //       form.resetFields();
+  //       fetchItems();
+  //     } else {
+  //       throw new Error("Unexpected status code: " + response.status);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error creating item:", error);
+  //     message.error(
+  //       "Failed to create item. Please check the data and try again."
+  //     );
+  //   }
+  // };
 
   const normFile = (e) => {
     if (Array.isArray(e)) {
@@ -122,6 +146,7 @@ const ManageItems = () => {
     try {
       await axios.delete(`https://eato.onrender.com/item/${id}`);
       message.success("Item deleted successfully!");
+      console.log(id);
       fetchItems();
     } catch (error) {
       console.error("Error deleting item:", error);
@@ -131,7 +156,11 @@ const ManageItems = () => {
 
   return (
     <div>
-      <Button className="button" onClick={() => setVisible(true)}>
+       <Button
+        className="button"
+        style={{ marginBottom: 16 }}
+        onClick={() => setVisible(true)}
+      >
         Create Item
       </Button>
       <Table dataSource={items} columns={columns} rowKey="id" />
