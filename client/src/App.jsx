@@ -68,7 +68,12 @@ const App = () => {
             { label: <Link to={"/token"}>{"Token"}</Link> },
             {
               label: (
-                <Link to={"/View Item Details"}>{"View Item Details"}</Link>
+                <Link to={"/viewItem"}>{"ViewItem"}</Link>
+              ),
+            },
+            {
+              label: (
+                <Link to={"/browseMeal"}>{"BrowseMeals"}</Link>
               ),
             },
           ]}

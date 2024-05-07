@@ -13,7 +13,7 @@ const ViewItem = ({ itemId }) => {
 
   const fetchItemData = async () => {
     try {
-      const response = await axios.get(`http://localhost:3001/items/${itemId}`);
+      const response = await axios.get(`https://eato.onrender.com/item/${itemId}`);
       setItem(response.data);
     } catch (error) {
       console.error("Error fetching item data:", error);
@@ -44,7 +44,6 @@ const ViewItem = ({ itemId }) => {
             cover={<img alt={item.name} src={item.image} />}
           >
             <p>Price: ${item.price}</p>
-            <p>Description: {item.description}</p>
           </Card>
         </Col>
       </Row>
