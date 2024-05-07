@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Button, Table, Modal, Form, Input, Space, message, Upload } from "antd";
+import {
+  Button,
+  Table,
+  Modal,
+  Form,
+  Input,
+  Space,
+  message,
+  Upload,
+} from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import axios from "axios";
 import { initializeApp } from "firebase/app";
@@ -13,7 +22,7 @@ const firebaseConfig = {
   storageBucket: "image-upload-1c651.appspot.com",
   messagingSenderId: "201296211009",
   appId: "1:201296211009:web:b798d3297c7748e7b92ac0",
-  measurementId: "G-YNY9SBYJVH"
+  measurementId: "G-YNY9SBYJVH",
 };
 
 initializeApp(firebaseConfig);
@@ -66,7 +75,9 @@ const ManageItems = () => {
       }
     } catch (error) {
       console.error("Error creating item:", error);
-      message.error("Failed to create item. Please check the data and try again.");
+      message.error(
+        "Failed to create item. Please check the data and try again."
+      );
     }
   };
 
@@ -145,7 +156,7 @@ const ManageItems = () => {
             name="price"
             rules={[
               { required: true, message: "Please enter the price!" },
-              // { type: "number", message: "Price must be a number!" },
+              { pattern: /^[0-9]+$/, message: "Price must be a number!" }, // Regular expression pattern
             ]}
           >
             <Input type="number" />
