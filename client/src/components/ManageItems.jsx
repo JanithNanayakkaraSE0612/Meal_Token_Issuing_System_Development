@@ -55,16 +55,18 @@ const ManageItems = () => {
 
   const fetchItems = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/item");
-      setItems(response.data);
+      const response = await axios.get("https://eato.onrender.com/item");
+      setItems(response.data); // Assuming response.data is an array
     } catch (error) {
       console.error("Error fetching items:", error);
     }
   };
-
   const handleCreate = async (values) => {
     try {
-      const response = await axios.post("http://localhost:3000/item", values);
+      const response = await axios.post(
+        "https://eato.onrender.com/item",
+        values
+      );
       if (response.status === 200) {
         message.success("Item created successfully!");
         setVisible(false);
@@ -114,7 +116,7 @@ const ManageItems = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/item/${id}`);
+      await axios.delete(`https://eato.onrender.com/item/${id}`);
       message.success("Item deleted successfully!");
       fetchItems();
     } catch (error) {
