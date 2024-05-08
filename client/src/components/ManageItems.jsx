@@ -16,13 +16,13 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import "../App.css";
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID",
-  measurementId: "YOUR_MEASUREMENT_ID",
+  apiKey: "AIzaSyDFq8wtK0Cisnq5K8VNJIgJSkGsnV_PpSw",
+  authDomain: "image-upload-1c651.firebaseapp.com",
+  projectId: "image-upload-1c651",
+  storageBucket: "image-upload-1c651.appspot.com",
+  messagingSenderId: "201296211009",
+  appId: "1:201296211009:web:b798d3297c7748e7b92ac0",
+  measurementId: "G-YNY9SBYJVH"
 };
 
 initializeApp(firebaseConfig);
