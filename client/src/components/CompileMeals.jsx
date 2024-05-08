@@ -12,20 +12,12 @@ const CompileMeals = () => {
     fetchMeals();
   }, []);
 
-  // const fetchMeals = async () => {
-  //   try {
-  //     const response = await axios.get("https://eato.onrender.com/meal");
-  //     setMeals(response.data);
-  //   } catch (error) {
-  //     console.error("Error fetching meals:", error);
-  //   }
-  // };
   const fetchMeals = async () => {
     try {
       const response = await axios.get("https://eato.onrender.com/meal");
       const responseData = response.data.data;
       if (Array.isArray(responseData)) {
-        setItems(responseData);
+        setMeals(responseData);
       } else {
         console.error("Data received is not an array:", responseData);
       }

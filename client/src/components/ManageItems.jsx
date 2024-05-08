@@ -75,6 +75,7 @@ const ManageItems = () => {
         price: values.price,
         picture: values.upload[0].url,
       });
+      
       if (response.status === 200) {
         message.success("Item created successfully!");
         setVisible(false);
