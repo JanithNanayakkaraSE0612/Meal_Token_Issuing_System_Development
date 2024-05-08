@@ -59,7 +59,7 @@ const App = () => {
         <Menu
           theme="light"
           mode="inline"
-          style={{ minHeight: "100vh" }}
+          style={{ minHeight: "100%" }}
           defaultSelectedKeys={["6"]}
           items={[
             { label: <Link to={"/"}>{"Dashboard"}</Link> },
@@ -68,12 +68,7 @@ const App = () => {
             { label: <Link to={"/token"}>{"Token"}</Link> },
             {
               label: (
-                <Link to={"/viewItem"}>{"ViewItem"}</Link>
-              ),
-            },
-            {
-              label: (
-                <Link to={"/browseMeal"}>{"BrowseMeals"}</Link>
+                <Link to={"/View Item Details"}>{"View Item Details"}</Link>
               ),
             },
           ]}
