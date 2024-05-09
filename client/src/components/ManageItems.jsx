@@ -43,11 +43,13 @@ const ManageItems = () => {
   };
 
   const handleImageUpload = async (file) => {
+    
     const storage = getStorage();
     const storageRef = ref(storage, `images/${file.name}`);
     await uploadBytes(storageRef, file);
     const downloadURL = await getDownloadURL(storageRef);
-    form.setFieldsValue({ upload: [{ url: downloadURL }] });
+    debugger;
+    form.setFieldsValue({ upload: [{ url: downloadURL, ref: storageRef.fullPath }] });
   };
 
   useEffect(() => {
@@ -70,20 +72,20 @@ const ManageItems = () => {
 
   const handleCreate = async (values) => {
     try {
+      debugger;
       const response = await axios.post("https://eato.onrender.com/item", {
         name: values.name,
-        price: values.price,
-        picture: values.upload[0].url,
+        price: Number(values.price),
+        picture: values.upload[0].ref,
+        
+      }, {
+        validateStatus: (status)=> status >= 200 || status < 400,
       });
+      message.success("Item created successfully!");
+      setVisible(false);
+      form.resetFields();
+      fetchItems();
       
-      if (response.status === 200) {
-        message.success("Item created successfully!");
-        setVisible(false);
-        form.resetFields();
-        fetchItems();
-      } else {
-        throw new Error("Unexpected status code: " + response.status);
-      }
     } catch (error) {
       console.error("Error creating item:", error);
       message.error(
@@ -92,13 +94,18 @@ const ManageItems = () => {
     }
   };
 
-  const handleEdit = (record) => {
+  const handleEdit = async (record) => {
     setEditingItem(record);
     setVisible(true);
+    
+    const storage = getStorage();
+    const storageRef = ref(storage, record.picture);
+    const upload = record.picture ? [{url: await getDownloadURL(storageRef), ref: record.picture }] : [];
+    debugger;
     form.setFieldsValue({
       name: record.name,
       price: record.price,
-      upload: [{ url: record.picture }],
+      upload: upload,
     });
   };
 
@@ -108,8 +115,8 @@ const ManageItems = () => {
         `https://eato.onrender.com/item/${editingItem.id}`,
         {
           name: values.name,
-          price: values.price,
-          picture: values.upload[0].url,
+          price: Number(values.price),
+          picture: values.upload[0].ref,
         }
       );
       if (response.status === 200) {
@@ -194,11 +201,14 @@ const ManageItems = () => {
           <Button
             key="submit"
             type="primary"
-            onClick={() => {
+            onClick={async () => {
               if (editingItem) {
-                form.submit();
+                const data = await form.validateFields();
+                handleUpdate(data);
               } else {
-                form.submit(handleCreate);
+                
+                const data = await form.validateFields();
+                handleCreate(data)
               }
             }}
           >
@@ -206,7 +216,7 @@ const ManageItems = () => {
           </Button>,
         ]}
       >
-        <Form form={form} onFinish={handleUpdate}>
+        <Form form={form}>
           <Form.Item
             label="Name"
             name="name"
