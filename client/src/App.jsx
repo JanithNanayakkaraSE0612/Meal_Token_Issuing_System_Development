@@ -65,7 +65,6 @@ const App = () => {
             { label: <Link to={"/"}>{"Dashboard"}</Link> },
             { label: <Link to={"/manageItems"}>{"ManageItems"}</Link> },
             { label: <Link to={"/CompileMeals"}>{"CompileMeals"}</Link> },
-            { label: <Link to={"/token"}>{"Token"}</Link> },
             {
               label: (
                 <Link to={"/View Item Details"}>{"View Item Details"}</Link>
