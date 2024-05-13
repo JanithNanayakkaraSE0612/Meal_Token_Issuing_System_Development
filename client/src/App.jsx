@@ -21,6 +21,7 @@ import AppRoute from "./routes/AppRoute";
 import logoImage from "./assets/token.webp";
 import { getComments, getOrders } from "./API";
 import { Link } from "react-router-dom";
+import AppCart from "./components/AppCart";
 const { Header, Content, Footer, Sider } = Layout;
 const items = [UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined];
 
@@ -67,9 +68,7 @@ const App = () => {
             { label: <Link to={"/CompileMeals"}>{"CompileMeals"}</Link> },
             { label: <Link to={"/mealList"}>{"MealList"}</Link> },
             {
-              label: (
-                <Link to={"/viewItem"}>{"View Item"}</Link>
-              ),
+              label: <Link to={"/viewItem"}>{"View Item"}</Link>,
             },
           ]}
         ></Menu>
@@ -149,6 +148,8 @@ const App = () => {
               }}
             />
           </Drawer>
+
+          <AppCart />
         </header>
         <Content
           style={{

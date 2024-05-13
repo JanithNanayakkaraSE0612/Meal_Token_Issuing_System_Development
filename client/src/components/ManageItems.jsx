@@ -16,13 +16,13 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import "../App.css";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDFq8wtK0Cisnq5K8VNJIgJSkGsnV_PpSw",
+  apiKey: "AIzaSyDFq8wtK0Cisnq5K8VNJIgJSkGsnV_PpSw",
   authDomain: "image-upload-1c651.firebaseapp.com",
   projectId: "image-upload-1c651",
   storageBucket: "image-upload-1c651.appspot.com",
   messagingSenderId: "201296211009",
   appId: "1:201296211009:web:b798d3297c7748e7b92ac0",
-  measurementId: "G-YNY9SBYJVH"
+  measurementId: "G-YNY9SBYJVH",
 };
 
 initializeApp(firebaseConfig);
@@ -43,13 +43,14 @@ const ManageItems = () => {
   };
 
   const handleImageUpload = async (file) => {
-    
     const storage = getStorage();
     const storageRef = ref(storage, `images/${file.name}`);
     await uploadBytes(storageRef, file);
     const downloadURL = await getDownloadURL(storageRef);
     debugger;
-    form.setFieldsValue({ upload: [{ url: downloadURL, ref: storageRef.fullPath }] });
+    form.setFieldsValue({
+      upload: [{ url: downloadURL, ref: storageRef.fullPath }],
+    });
   };
 
   useEffect(() => {
@@ -73,19 +74,21 @@ const ManageItems = () => {
   const handleCreate = async (values) => {
     try {
       debugger;
-      const response = await axios.post("https://eato.onrender.com/item", {
-        name: values.name,
-        price: Number(values.price),
-        picture: values.upload[0].ref,
-        
-      }, {
-        validateStatus: (status)=> status >= 200 || status < 400,
-      });
+      const response = await axios.post(
+        "https://eato.onrender.com/item",
+        {
+          name: values.name,
+          price: Number(values.price),
+          picture: values.upload[0].ref,
+        },
+        {
+          validateStatus: (status) => status >= 200 || status < 400,
+        }
+      );
       message.success("Item created successfully!");
       setVisible(false);
       form.resetFields();
       fetchItems();
-      
     } catch (error) {
       console.error("Error creating item:", error);
       message.error(
@@ -97,10 +100,12 @@ const ManageItems = () => {
   const handleEdit = async (record) => {
     setEditingItem(record);
     setVisible(true);
-    
+
     const storage = getStorage();
     const storageRef = ref(storage, record.picture);
-    const upload = record.picture ? [{url: await getDownloadURL(storageRef), ref: record.picture }] : [];
+    const upload = record.picture
+      ? [{ url: await getDownloadURL(storageRef), ref: record.picture }]
+      : [];
     debugger;
     form.setFieldsValue({
       name: record.name,
@@ -206,9 +211,8 @@ const ManageItems = () => {
                 const data = await form.validateFields();
                 handleUpdate(data);
               } else {
-                
                 const data = await form.validateFields();
-                handleCreate(data)
+                handleCreate(data);
               }
             }}
           >
