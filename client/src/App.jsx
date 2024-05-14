@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
   BellFilled,
-  MailOutlined,
+  ShoppingCartOutlined,
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
@@ -28,7 +28,7 @@ const items = [UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined];
 const App = () => {
   const [comments, setComments] = useState([]);
   const [orders, setOrders] = useState([]);
-  const [commentsOpen, setCommentsOpen] = useState(false);
+  // const [cartItems, setCartItems] = useState([]);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
 
   useEffect(() => {
@@ -92,7 +92,18 @@ const App = () => {
               gap={10}
               style={{ marginRight: "40px", marginTop: "10px" }}
             >
-              <Badge count={comments.length} dot>
+               <AppCart />
+              {/* <Badge
+                onClick={() => {
+                  setCartDrawerOpen(true);
+                }}
+                count={cartItems.length}
+                className="soppingCartIcon"
+              >
+                <ShoppingCartOutlined 
+                style={{fontSize:24}}/>
+              </Badge> */}
+              {/* <Badge count={comments.length} dot>
                 <MailOutlined
                   className={"mailIcon"}
                   style={{ fontSize: 24 }}
@@ -100,20 +111,21 @@ const App = () => {
                     setCommentsOpen(true);
                   }}
                 />
-              </Badge>
+              </Badge> */}
               <Badge count={orders.length}>
                 <BellFilled
                   className={"bellIcon"}
-                  style={{ fontSize: 24 }}
+                  style={{ fontSize: 24 ,color:"darkorange" }}
                   onClick={() => {
                     setNotificationsOpen(true);
                   }}
                 />
               </Badge>
+             
             </Flex>
           </Flex>
 
-          <Drawer
+          {/* <Drawer
             title="Comments"
             open={commentsOpen}
             onClose={() => {
@@ -127,7 +139,8 @@ const App = () => {
                 return <List.Item>{item.body}</List.Item>;
               }}
             />
-          </Drawer>
+          </Drawer> */}
+         
           <Drawer
             title="Notifications"
             open={notificationsOpen}
@@ -149,7 +162,7 @@ const App = () => {
             />
           </Drawer>
 
-          <AppCart />
+          
         </header>
         <Content
           style={{

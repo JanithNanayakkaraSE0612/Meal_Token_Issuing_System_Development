@@ -39,7 +39,7 @@ function AppCart() {
           count={cartItems.length}
           className="soppingCartIcon"
         >
-          <ShoppingCartOutlined />
+          <ShoppingCartOutlined style={{fontSize:24,color:"darkred"}}/>
         </Badge>
         <Drawer
           open={cartDrawerOpen}
