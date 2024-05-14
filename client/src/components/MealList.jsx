@@ -26,8 +26,8 @@ const MealList = () => {
             }}
             cover={<img alt="example" src="" />}
             actions={[
-              <MinusSquareOutlined key="minus" />,
-              <PlusSquareOutlined key="plus" />,
+              // <MinusSquareOutlined key="minus" />,
+              // <PlusSquareOutlined key="plus" />,
               <Button
                 type="added"
                 style={{ backgroundColor: "#F56A00", color: "white" }}
@@ -99,7 +99,7 @@ const MealList = () => {
             <Meta title="Vegetable Fried Rice" />
           </Card>
         </div>
-        <div
+        {/* <div
           style={{
             width: 300,
             backgroundColor: "#DFF9FB",
@@ -278,7 +278,7 @@ const MealList = () => {
               </div>
             </div>
           </Card>
-        </div>
+        </div> */}
       </div>
     </Space>
   );
