@@ -7,8 +7,15 @@ const MealList = () => {
     const meals = [
         {
             title: "Vegetable Fried Rice",
-            img: "https://www.whiskaffair.com/wp-content/uploads/2018/11/Vegetable-Fried-Rice-2-3.jpg", // Add your image source here
+            img: "https://www.whiskaffair.com/wp-content/uploads/2018/11/Vegetable-Fried-Rice-2-3.jpg", // Replace with actual image URL
+            price: "$10.99",
             id: 1,
+        },
+        {
+            title: "Chicken Pizza",
+            img: "https://th.bing.com/th/id/R.8a5742aca79d979c19483bc3a2e7b131?rik=B12c6AOi4HIENw&pid=ImgRaw&r=0", // Replace with actual image URL
+            price: "$12.99",
+            id: 2,
         },
         // Add more meal items here
     ];
@@ -19,9 +26,7 @@ const MealList = () => {
                 {meals.map((meal) => (
                     <Col xs={24} sm={12} md={8} lg={6} key={meal.id}>
                         <Card
-                            style={{
-                                width: "100%",
-                            }}
+                            style={{ width: "100%" }}
                             cover={<img alt={meal.title} src={meal.img} />}
                             actions={[
                                 <Button
@@ -32,7 +37,12 @@ const MealList = () => {
                                 </Button>,
                             ]}
                         >
-                            <Meta title={meal.title} />
+                            <Meta
+                                title={meal.title}
+                                description={<div>
+                                    <p style={{ margin: 0 }}>{meal.price}</p>
+                                </div>}
+                            />
                         </Card>
                     </Col>
                 ))}
