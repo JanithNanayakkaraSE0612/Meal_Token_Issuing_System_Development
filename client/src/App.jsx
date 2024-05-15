@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
   BellFilled,
-  ShoppingCartOutlined,
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
@@ -19,22 +18,17 @@ import {
 } from "antd";
 import AppRoute from "./routes/AppRoute";
 import logoImage from "./assets/token.webp";
-import { getComments, getOrders } from "./API";
+import {  getOrders } from "./API";
 import { Link } from "react-router-dom";
 import AppCart from "./components/AppCart";
 const { Header, Content, Footer, Sider } = Layout;
 const items = [UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined];
 
 const App = () => {
-  const [comments, setComments] = useState([]);
   const [orders, setOrders] = useState([]);
-  // const [cartItems, setCartItems] = useState([]);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
 
   useEffect(() => {
-    getComments().then((res) => {
-      setComments(res.comments);
-    });
     getOrders().then((res) => {
       setOrders(res.products);
     });
@@ -93,25 +87,6 @@ const App = () => {
               style={{ marginRight: "40px", marginTop: "10px" }}
             >
                <AppCart />
-              {/* <Badge
-                onClick={() => {
-                  setCartDrawerOpen(true);
-                }}
-                count={cartItems.length}
-                className="soppingCartIcon"
-              >
-                <ShoppingCartOutlined 
-                style={{fontSize:24}}/>
-              </Badge> */}
-              {/* <Badge count={comments.length} dot>
-                <MailOutlined
-                  className={"mailIcon"}
-                  style={{ fontSize: 24 }}
-                  onClick={() => {
-                    setCommentsOpen(true);
-                  }}
-                />
-              </Badge> */}
               <Badge count={orders.length}>
                 <BellFilled
                   className={"bellIcon"}
@@ -123,24 +98,7 @@ const App = () => {
               </Badge>
              
             </Flex>
-          </Flex>
-
-          {/* <Drawer
-            title="Comments"
-            open={commentsOpen}
-            onClose={() => {
-              setCommentsOpen(false);
-            }}
-            maskClosable
-          >
-            <List
-              dataSource={comments}
-              renderItem={(item) => {
-                return <List.Item>{item.body}</List.Item>;
-              }}
-            />
-          </Drawer> */}
-         
+          </Flex>         
           <Drawer
             title="Notifications"
             open={notificationsOpen}
