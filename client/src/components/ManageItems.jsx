@@ -73,7 +73,7 @@ const ManageItems = () => {
 
   const handleCreate = async (values) => {
     try {
-      debugger;
+      // debugger;
       const response = await axios.post(
         "https://eato.onrender.com/item",
         {

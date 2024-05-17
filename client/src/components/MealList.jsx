@@ -1,33 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Card, Space, Row, Col, Button } from "antd";
+import axios from "axios";
 
 const { Meta } = Card;
 
 const MealList = () => {
-    const meals = [
-        {
-            title: "Vegetable Fried Rice",
-            img: "https://www.whiskaffair.com/wp-content/uploads/2018/11/Vegetable-Fried-Rice-2-3.jpg", // Replace with actual image URL
-            price: "$10.99",
-            id: 1,
-        },
-        {
-            title: "Chicken Pizza",
-            img: "https://th.bing.com/th/id/R.8a5742aca79d979c19483bc3a2e7b131?rik=B12c6AOi4HIENw&pid=ImgRaw&r=0", // Replace with actual image URL
-            price: "$12.99",
-            id: 2,
-        },
-        // Add more meal items here
-    ];
+    const [items, setItems] = useState([]);
+
+
+    useEffect(() => {
+        fetchItems();
+    }, []);
+
+    const fetchItems = async () => {
+        try {
+            const response = await axios.get("https://eato.onrender.com/item");
+            const responseData = response.data.data;
+
+            if (Array.isArray(responseData)) {
+                setItems(responseData);
+            } else {
+                console.error("Data received is not an array:", responseData);
+            }
+        } catch (error) {
+            console.error("Error fetching items:", error);
+        }
+    };
+
 
     return (
         <Space direction="vertical" size={2} style={{ width: "100%", padding: "20px" }}>
             <Row gutter={[16, 16]}>
-                {meals.map((meal) => (
+                {items.map((meal) => (
                     <Col xs={24} sm={12} md={8} lg={6} key={meal.id}>
                         <Card
                             style={{ width: "100%" }}
-                            cover={<img alt={meal.title} src={meal.img} />}
+                            title={meal.name}
+                            cover={<img alt={meal.title} src={meal.picture} />}
                             actions={[
                                 <Button
                                     type="primary"
