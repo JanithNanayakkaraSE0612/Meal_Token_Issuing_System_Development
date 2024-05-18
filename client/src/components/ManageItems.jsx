@@ -74,15 +74,15 @@ const ManageItems = () => {
     try {
       // debugger;
       const response = await axios.post(
-          "https://eato.onrender.com/item",
-          {
-            name: values.name,
-            price: Number(values.price),
-            picture: values.upload[0].ref,
-          },
-          {
-            validateStatus: (status) => status >= 200 || status < 400,
-          }
+        "https://eato.onrender.com/item",
+        {
+          name: values.name,
+          price: Number(values.price),
+          picture: values.upload[0].ref,
+        },
+        {
+          validateStatus: (status) => status >= 200 || status < 400,
+        }
       );
       message.success("Item created successfully!");
       setVisible(false);
@@ -91,7 +91,7 @@ const ManageItems = () => {
     } catch (error) {
       console.error("Error creating item:", error);
       message.error(
-          "Failed to create item. Please check the data and try again."
+        "Failed to create item. Please check the data and try again."
       );
     }
   };
@@ -105,7 +105,7 @@ const ManageItems = () => {
     const upload = record.picture
       ? [{ url: await getDownloadURL(storageRef), ref: record.picture }]
       : [];
-    debugger;
+
     form.setFieldsValue({
       name: record.name,
       price: record.price,
@@ -116,12 +116,12 @@ const ManageItems = () => {
   const handleUpdate = async (values) => {
     try {
       const response = await axios.put(
-          `https://eato.onrender.com/item/${editingItem.id}`,
-          {
-            name: values.name,
-            price: Number(values.price),
-            picture: values.upload[0].ref,
-          }
+        `https://eato.onrender.com/item/${editingItem.id}`,
+        {
+          name: values.name,
+          price: Number(values.price),
+          picture: values.upload[0].ref,
+        }
       );
       if (response.status === 200) {
         message.success("Item updated successfully!");
@@ -134,7 +134,7 @@ const ManageItems = () => {
     } catch (error) {
       console.error("Error updating item:", error);
       message.error(
-          "Failed to update item. Please check the data and try again."
+        "Failed to update item. Please check the data and try again."
       );
     }
   };
@@ -154,14 +154,14 @@ const ManageItems = () => {
       title: "Actions",
       key: "actions",
       render: (text, record) => (
-          <Space>
-            <Button type="primary" onClick={() => handleEdit(record)}>
-              Edit
-            </Button>
-            <Button type="danger" onClick={() => handleDelete(record.id)}>
-              Delete
-            </Button>
-          </Space>
+        <Space>
+          <Button type="primary" onClick={() => handleEdit(record)}>
+            Edit
+          </Button>
+          <Button type="danger" onClick={() => handleDelete(record.id)}>
+            Delete
+          </Button>
+        </Space>
       ),
     },
   ];
@@ -178,84 +178,84 @@ const ManageItems = () => {
   };
 
   return (
-      <div>
-        <Button
-            className="button"
-            style={{ marginBottom: 16 }}
-            onClick={() => {
-              setEditingItem(null);
-              setVisible(true);
-            }}
-        >
-          Create Item
-        </Button>
-        <Table dataSource={items} columns={columns} rowKey="id" />
+    <div>
+      <Button
+        className="button"
+        style={{ marginBottom: 16 }}
+        onClick={() => {
+          setEditingItem(null);
+          setVisible(true);
+        }}
+      >
+        Create Item
+      </Button>
+      <Table dataSource={items} columns={columns} rowKey="id" />
 
-        <Modal
-            title={editingItem ? "Edit Item" : "Create Item"}
-            visible={visible}
-            onCancel={() => {
-              setVisible(false);
-              form.resetFields();
+      <Modal
+        title={editingItem ? "Edit Item" : "Create Item"}
+        visible={visible}
+        onCancel={() => {
+          setVisible(false);
+          form.resetFields();
+        }}
+        footer={[
+          <Button key="cancel" onClick={() => setVisible(false)}>
+            Cancel
+          </Button>,
+          <Button
+            key="submit"
+            type="primary"
+            onClick={async () => {
+              if (editingItem) {
+                const data = await form.validateFields();
+                handleUpdate(data);
+              } else {
+                const data = await form.validateFields();
+                handleCreate(data);
+              }
             }}
-            footer={[
-              <Button key="cancel" onClick={() => setVisible(false)}>
-                Cancel
-              </Button>,
-              <Button
-                  key="submit"
-                  type="primary"
-                  onClick={async () => {
-                    if (editingItem) {
-                      const data = await form.validateFields();
-                      handleUpdate(data);
-                    } else {
-                      const data = await form.validateFields();
-                      handleCreate(data);
-                    }
-                  }}
-              >
-                {editingItem ? "Update" : "Create"}
-              </Button>,
+          >
+            {editingItem ? "Update" : "Create"}
+          </Button>,
+        ]}
+      >
+        <Form form={form}>
+          <Form.Item
+            label="Name"
+            name="name"
+            rules={[{ required: true, message: "Please enter the name!" }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Price"
+            name="price"
+            rules={[
+              { required: true, message: "Please enter the price!" },
+              { pattern: /^[0-9]+$/, message: "Price must be a number!" },
             ]}
-        >
-          <Form form={form}>
-            <Form.Item
-                label="Name"
-                name="name"
-                rules={[{ required: true, message: "Please enter the name!" }]}
+          >
+            <Input type="number" />
+          </Form.Item>
+          <Form.Item
+            label="Upload"
+            name="upload"
+            valuePropName="fileList"
+            getValueFromEvent={normFile}
+          >
+            <Upload
+              action="/upload.do"
+              listType="picture-card"
+              beforeUpload={beforeUpload}
             >
-              <Input />
-            </Form.Item>
-            <Form.Item
-                label="Price"
-                name="price"
-                rules={[
-                  { required: true, message: "Please enter the price!" },
-                  { pattern: /^[0-9]+$/, message: "Price must be a number!" },
-                ]}
-            >
-              <Input type="number" />
-            </Form.Item>
-            <Form.Item
-                label="Upload"
-                name="upload"
-                valuePropName="fileList"
-                getValueFromEvent={normFile}
-            >
-              <Upload
-                  action="/upload.do"
-                  listType="picture-card"
-                  beforeUpload={beforeUpload}
-              >
-                <Button>
-                  <PlusOutlined /> Upload
-                </Button>
-              </Upload>
-            </Form.Item>
-          </Form>
-        </Modal>
-      </div>
+              <Button>
+                <PlusOutlined /> Upload
+              </Button>
+            </Upload>
+          </Form.Item>
+        </Form>
+      </Modal>
+    </div>
   );
 };
 

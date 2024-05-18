@@ -18,7 +18,7 @@ import {
 } from "antd";
 import AppRoute from "./routes/AppRoute";
 import logoImage from "./assets/token.webp";
-import {  getOrders } from "./API";
+import { getOrders } from "./API";
 import { Link } from "react-router-dom";
 import AppCart from "./components/AppCart";
 const { Header, Content, Footer, Sider } = Layout;
@@ -83,19 +83,18 @@ const App = () => {
               gap={10}
               style={{ marginRight: "40px", marginTop: "10px" }}
             >
-               <AppCart />
+              <AppCart />
               <Badge count={orders.length}>
                 <BellFilled
                   className={"bellIcon"}
-                  style={{ fontSize: 24 ,color:"darkorange" }}
+                  style={{ fontSize: 24, color: "darkorange" }}
                   onClick={() => {
                     setNotificationsOpen(true);
                   }}
                 />
               </Badge>
-             
             </Flex>
-          </Flex>         
+          </Flex>
           <Drawer
             title="Notifications"
             open={notificationsOpen}
@@ -116,8 +115,6 @@ const App = () => {
               }}
             />
           </Drawer>
-
-          
         </header>
         <Content
           style={{
@@ -140,7 +137,6 @@ const App = () => {
             textAlign: "center",
           }}
         >
-        
           ©{new Date().getFullYear()} Created by BizSoft Software Solutions
         </Footer>
       </Layout>
