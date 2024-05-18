@@ -9,17 +9,17 @@ const MealList = ({ addToCart }) => {
   const [items, setItems] = useState([]);
   const [cartItems, setCartItems] = useState([]);
 
-  // const addToCart = async (meal) => {
-  //   try {
-  //     // Optionally send data to the server using Axios
-  //     await axios.post("https://eato.onrender.com/cart", { meal });
+//   const addToCart = async (meal) => {
+//     try {
+//       // Optionally send data to the server using Axios
+//       await axios.post("https://eato.onrender.com/cart", { meal });
 
-  //     // Update the local state with the new cart item
-  //     setCartItems([...cartItems, meal]);
-  //   } catch (error) {
-  //     console.error("Error adding to cart:", error);
-  //   }
-  // };
+//       // Update the local state with the new cart item
+//       setCartItems([...cartItems, meal]);
+//     } catch (error) {
+//       console.error("Error adding to cart:", error);
+//     }
+//   };
   useEffect(() => {
     fetchItems();
   }, []);

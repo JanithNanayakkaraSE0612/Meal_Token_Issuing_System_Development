@@ -1,4 +1,4 @@
-import { HomeFilled, ShoppingCartOutlined } from "@ant-design/icons";
+import { ShoppingCartOutlined } from "@ant-design/icons";
 import {
   Badge,
   Button,
@@ -6,28 +6,33 @@ import {
   Drawer,
   Form,
   Input,
-  InputNumber,
-  Menu,
-  message,
   Table,
   Typography,
+  message,
 } from "antd";
 import { useEffect, useState } from "react";
 import { getCart } from "../API";
+
 function AppCart() {
   const [cartDrawerOpen, setCartDrawerOpen] = useState(false);
   const [checkoutDrawerOpen, setCheckoutDrawerOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
+
   useEffect(() => {
     getCart().then((res) => {
       setCartItems(res.products);
     });
   }, []);
+
   const onConfirmOrder = (values) => {
     console.log({ values });
     setCartDrawerOpen(false);
     setCheckoutDrawerOpen(false);
     message.success("Your order has been placed successfully.");
+  };
+
+  const calculateTotal = () => {
+    return cartItems.reduce((total, item) => total + item.price, 0);
   };
 
   return (
@@ -37,7 +42,7 @@ function AppCart() {
           setCartDrawerOpen(true);
         }}
         count={cartItems.length}
-        className="soppingCartIcon"
+        className="shoppingCartIcon"
       >
         <ShoppingCartOutlined style={{ fontSize: 24, color: "darkred" }} />
       </Badge>
@@ -53,52 +58,30 @@ function AppCart() {
           pagination={false}
           columns={[
             {
-              title: "Title",
-              dataIndex: "title",
+              title: "Name",
+              dataIndex: "name",
             },
             {
               title: "Price",
               dataIndex: "price",
               render: (value) => {
-                return <span>${value}</span>;
-              },
-            },
-            {
-              title: "Quantity",
-              dataIndex: "quantity",
-              render: (value, record) => {
-                return (
-                  <InputNumber
-                    min={0}
-                    defaultValue={value}
-                    onChange={(value) => {
-                      setCartItems((pre) =>
-                        pre.map((cart) => {
-                          if (record.id === cart.id) {
-                            cart.total = cart.price * value;
-                          }
-                          return cart;
-                        })
-                      );
-                    }}
-                  ></InputNumber>
-                );
-              },
-            },
-            {
-              title: "Total",
-              dataIndex: "total",
-              render: (value) => {
-                return <span>${value}</span>;
+                return <span>${value.toFixed(2)}</span>;
               },
             },
           ]}
           dataSource={cartItems}
           summary={(data) => {
-            const total = data.reduce((pre, current) => {
-              return pre + current.total;
-            }, 0);
-            return <span>Total: ${total}</span>;
+            const total = calculateTotal();
+            return (
+              <Table.Summary.Row>
+                <Table.Summary.Cell index={0} colSpan={1}>
+                  <strong>Total:</strong>
+                </Table.Summary.Cell>
+                <Table.Summary.Cell index={1}>
+                  <strong>${total.toFixed(2)}</strong>
+                </Table.Summary.Cell>
+              </Table.Summary.Row>
+            );
           }}
         />
         <Button
@@ -106,6 +89,7 @@ function AppCart() {
             setCheckoutDrawerOpen(true);
           }}
           type="primary"
+          style={{ marginTop: 16 }}
         >
           Checkout Your Cart
         </Button>
@@ -139,7 +123,7 @@ function AppCart() {
               },
             ]}
             label="Email"
-            name="your_name"
+            name="email"
           >
             <Input placeholder="Enter your email.." />
           </Form.Item>
@@ -151,7 +135,7 @@ function AppCart() {
               },
             ]}
             label="Address"
-            name="your_address"
+            name="address"
           >
             <Input placeholder="Enter your full address.." />
           </Form.Item>
@@ -164,7 +148,6 @@ function AppCart() {
             More methods coming soon
           </Typography.Paragraph>
           <Button type="primary" htmlType="submit">
-            {" "}
             Confirm Order
           </Button>
         </Form>
@@ -172,4 +155,5 @@ function AppCart() {
     </div>
   );
 }
+
 export default AppCart;
