@@ -1,12 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { Card, Space, Row, Col, Button } from "antd";
 import axios from "axios";
+import { addToCart } from "../API";
 
 const { Meta } = Card;
 
-const MealList = () => {
+const MealList = ({addToCart}) => {
   const [items, setItems] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
 
+  // const addToCart = async (meal) => {
+  //   try {
+  //     // Optionally send data to the server using Axios
+  //     await axios.post("https://eato.onrender.com/cart", { meal });
+
+  //     // Update the local state with the new cart item
+  //     setCartItems([...cartItems, meal]);
+  //   } catch (error) {
+  //     console.error("Error adding to cart:", error);
+  //   }
+  // };
   useEffect(() => {
     fetchItems();
   }, []);
@@ -62,6 +75,7 @@ const MealList = () => {
                 <Button
                   type="primary"
                   style={{ backgroundColor: "#F56A00", color: "white" }}
+                  onClick={()=>addToCart(meal)}
                 >
                   Added
                 </Button>,

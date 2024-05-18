@@ -47,7 +47,6 @@ const ManageItems = () => {
     const storageRef = ref(storage, `images/${file.name}`);
     await uploadBytes(storageRef, file);
     const downloadURL = await getDownloadURL(storageRef);
-    debugger;
     form.setFieldsValue({
       upload: [{ url: downloadURL, ref: storageRef.fullPath }],
     });
@@ -106,7 +105,7 @@ const ManageItems = () => {
     const upload = record.picture
       ? [{ url: await getDownloadURL(storageRef), ref: record.picture }]
       : [];
-    debugger;
+  
     form.setFieldsValue({
       name: record.name,
       price: record.price,

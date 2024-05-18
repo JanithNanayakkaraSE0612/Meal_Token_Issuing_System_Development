@@ -59,7 +59,7 @@ const App = () => {
           items={[
             { label: <Link to={"/"}>{"Dashboard"}</Link> },
             { label: <Link to={"/manageItems"}>{"ManageItems"}</Link> },
-            { label: <Link to={"/CompileMeals"}>{"CompileMeals"}</Link> },
+            { label: <Link to={"/CompileMeals"}>{"PlaceOrder"}</Link> },
             { label: <Link to={"/mealList"}>{"MealList"}</Link> },
           ]}
         ></Menu>
