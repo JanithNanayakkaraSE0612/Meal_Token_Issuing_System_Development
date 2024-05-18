@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Card, Space, Row, Col, Button } from "antd";
 import axios from "axios";
-import { addToCart } from "../API";
 
 const { Meta } = Card;
 
@@ -9,17 +8,6 @@ const MealList = ({ addToCart }) => {
   const [items, setItems] = useState([]);
   const [cartItems, setCartItems] = useState([]);
 
-//   const addToCart = async (meal) => {
-//     try {
-//       // Optionally send data to the server using Axios
-//       await axios.post("https://eato.onrender.com/cart", { meal });
-
-//       // Update the local state with the new cart item
-//       setCartItems([...cartItems, meal]);
-//     } catch (error) {
-//       console.error("Error adding to cart:", error);
-//     }
-//   };
   useEffect(() => {
     fetchItems();
   }, []);
@@ -54,23 +42,19 @@ const MealList = ({ addToCart }) => {
               style={{ width: "100%" }}
               title={meal.name}
               cover={
-                <>
-                  <img
-                    alt={meal.name}
-                    src={meal.picture}
-                    style={{
-                      width: "100%",
-                      height: "200px",
-                      objectFit: "cover",
-                    }}
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = "default-image-url.jpg"; // Fallback image
-                    }}
-                  />
-                  {console.log("Image URL:", meal.picture)}{" "}
-                  {/* Log Image URL */}
-                </>
+                <img
+                  alt={meal.name}
+                  src={meal.picture}
+                  style={{
+                    width: "100%",
+                    height: "200px",
+                    objectFit: "cover",
+                  }}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = "default-image-url.jpg"; // Fallback image
+                  }}
+                />
               }
               actions={[
                 <Button
@@ -78,15 +62,14 @@ const MealList = ({ addToCart }) => {
                   style={{ backgroundColor: "#F56A00", color: "white" }}
                   onClick={() => addToCart(meal)}
                 >
-                  Added
+                  Add to Cart
                 </Button>,
               ]}
             >
               <Meta
-                title={meal.title}
                 description={
                   <div>
-                    <p style={{ margin: 0 }}>{meal.price}</p>
+                    <p style={{ margin: 0 }}>${meal.price}</p>
                   </div>
                 }
               />
