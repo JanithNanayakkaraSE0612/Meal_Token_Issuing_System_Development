@@ -16,6 +16,8 @@ const MealList = () => {
       const response = await axios.get("https://eato.onrender.com/item");
       const responseData = response.data.data;
 
+      console.log("Fetched items:", responseData); // Log response data
+
       if (Array.isArray(responseData)) {
         setItems(responseData);
       } else {
@@ -38,7 +40,24 @@ const MealList = () => {
             <Card
               style={{ width: "100%" }}
               title={meal.name}
-              cover={<img alt={meal.title} src={meal.picture} />}
+              cover={
+                <>
+                  <img
+                    alt={meal.name}
+                    src={meal.picture}
+                    style={{
+                      width: "100%",
+                      height: "200px",
+                      objectFit: "cover",
+                    }}
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = "default-image-url.jpg"; // Fallback image
+                    }}
+                  />
+                  {console.log("Image URL:", meal.picture)} {/* Log Image URL */}
+                </>
+              }
               actions={[
                 <Button
                   type="primary"
