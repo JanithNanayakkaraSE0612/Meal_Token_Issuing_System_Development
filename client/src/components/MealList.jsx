@@ -50,10 +50,10 @@ const MealList = ({ addToCart }) => {
                     height: "200px",
                     objectFit: "cover",
                   }}
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = "default-image-url.jpg"; // Fallback image
-                  }}
+                //   onError={(e) => {
+                //     e.target.onerror = null;
+                //     e.target.src = "default-image-url.jpg"; // Fallback image
+                //   }}
                 />
               }
               actions={[

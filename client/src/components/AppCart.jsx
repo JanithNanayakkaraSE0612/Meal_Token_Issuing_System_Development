@@ -34,7 +34,16 @@ function AppCart() {
   const calculateTotal = () => {
     return cartItems.reduce((total, item) => total + item.price, 0);
   };
-
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`https://eato.onrender.com/cart/${id}`);
+      message.success("Item deleted successfully!");
+      fetchItems();
+    } catch (error) {
+      console.error("Error deleting item:", error);
+      message.error("Failed to delete item.");
+    }
+  };
   return (
     <div>
       <Badge
@@ -67,6 +76,17 @@ function AppCart() {
               render: (value) => {
                 return <span>${value.toFixed(2)}</span>;
               },
+            },
+            {
+              title: "Remove",
+              key: "actions",
+              render: (text, record) => (
+               
+                  <Button type="danger" onClick={() => handleDelete(record.id)}>
+                    Delete
+                  </Button>
+          
+              ),
             },
           ]}
           dataSource={cartItems}
