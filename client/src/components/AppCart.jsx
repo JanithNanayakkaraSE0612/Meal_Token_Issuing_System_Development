@@ -11,7 +11,6 @@ import {
   message,
 } from "antd";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { getCart } from "../API";
 
 function AppCart() {
@@ -20,18 +19,10 @@ function AppCart() {
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
-    fetchCartItems();
-  }, []);
-
-  const fetchCartItems = async () => {
-    try {
-      const res = await getCart();
+    getCart().then((res) => {
       setCartItems(res.products);
-    } catch (error) {
-      console.error("Error fetching cart items:", error);
-      message.error("Failed to load cart items.");
-    }
-  };
+    });
+  }, []);
 
   const onConfirmOrder = (values) => {
     console.log({ values });
@@ -43,18 +34,16 @@ function AppCart() {
   const calculateTotal = () => {
     return cartItems.reduce((total, item) => total + item.price, 0);
   };
-
   const handleDelete = async (id) => {
     try {
       await axios.delete(`https://eato.onrender.com/cart/${id}`);
       message.success("Item deleted successfully!");
-      fetchCartItems();
+      fetchItems();
     } catch (error) {
       console.error("Error deleting item:", error);
       message.error("Failed to delete item.");
     }
   };
-
   return (
     <div>
       <Badge
@@ -80,9 +69,6 @@ function AppCart() {
             {
               title: "Name",
               dataIndex: "name",
-              render: (value) => {
-                return <span>{value}</span>;
-              },
             },
             {
               title: "Price",
@@ -95,9 +81,11 @@ function AppCart() {
               title: "Remove",
               key: "actions",
               render: (text, record) => (
-                <Button type="danger" onClick={() => handleDelete(record.id)}>
-                  Delete
-                </Button>
+               
+                  <Button type="danger" onClick={() => handleDelete(record.id)}>
+                    Delete
+                  </Button>
+          
               ),
             },
           ]}
@@ -106,10 +94,10 @@ function AppCart() {
             const total = calculateTotal();
             return (
               <Table.Summary.Row>
-                <Table.Summary.Cell index={0} colSpan={2}>
+                <Table.Summary.Cell index={0} colSpan={1}>
                   <strong>Total:</strong>
                 </Table.Summary.Cell>
-                <Table.Summary.Cell index={2}>
+                <Table.Summary.Cell index={1}>
                   <strong>${total.toFixed(2)}</strong>
                 </Table.Summary.Cell>
               </Table.Summary.Row>
