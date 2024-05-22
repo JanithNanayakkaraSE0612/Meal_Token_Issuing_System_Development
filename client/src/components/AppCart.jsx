@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { Badge, Button, Drawer, Table, message } from "antd";
-import axios from "axios";
+
 
 const AppCart = () => {
   const [cartDrawerOpen, setCartDrawerOpen] = useState(false);
