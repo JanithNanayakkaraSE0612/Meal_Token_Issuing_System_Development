@@ -1,23 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Card, Space, Row, Col, Button, message } from "antd";
 import axios from "axios";
-import { initializeApp } from "firebase/app";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDFq8wtK0Cisnq5K8VNJIgJSkGsnV_PpSw",
-  authDomain: "image-upload-1c651.firebaseapp.com",
-  projectId: "image-upload-1c651",
-  storageBucket: "image-upload-1c651.appspot.com",
-  messagingSenderId: "201296211009",
-  appId: "1:201296211009:web:b798d3297c7748e7b92ac0",
-  measurementId: "G-YNY9SBYJVH",
-};
-
-initializeApp(firebaseConfig);
 const { Meta } = Card;
 
-const MealList = () => {
+const MealList = ({ onAddToCart }) => {
   const [items, setItems] = useState([]);
   const [imageUrls, setImageUrls] = useState({});
   const [loadingImages, setLoadingImages] = useState({});
@@ -25,6 +13,14 @@ const MealList = () => {
   useEffect(() => {
     fetchItems();
   }, []);
+
+  const addToCart = (meal) => {
+    const existingCartData = JSON.parse(localStorage.getItem("cartData")) || [];
+    const updatedCartData = [...existingCartData, meal];
+    localStorage.setItem("cartData", JSON.stringify(updatedCartData));
+    message.success("Item added to cart!");
+    onAddToCart(updatedCartData); // Notify parent component about the cart update
+  };
 
   const fetchItems = async () => {
     try {
@@ -56,31 +52,24 @@ const MealList = () => {
     });
 
     const imageUrlsArray = await Promise.all(imageUrlsPromises);
-    const newImageUrls = imageUrlsArray.reduce((acc, curr) => ({ ...acc, ...curr }), {});
+    const newImageUrls = imageUrlsArray.reduce(
+      (acc, curr) => ({ ...acc, ...curr }),
+      {}
+    );
     setImageUrls(newImageUrls);
-  };
-
-  const addToCart = async (meal) => {
-    try {
-      const response = await axios.post("https://eato.onrender.com/cart", { meal });
-      if (response.status === 200) {
-        message.success("Item added to cart!");
-      } else {
-        message.error("Failed to add item to cart.");
-      }
-    } catch (error) {
-      console.error("Error adding to cart:", error);
-      message.error("Failed to add item to cart.");
-    }
   };
 
   return (
     <div>
-      <Space direction="vertical" size={2} style={{ width: "100%", padding: "20px" }}>
+      <Space
+        direction="vertical"
+        size={2}
+        style={{ width: "100%", padding: "20px" }}
+      >
         <Row gutter={[16, 16]}>
           {items.map((meal) => {
             const imageUrl = imageUrls[meal.id];
-            const isLoading = loadingImages[meal.id] || false; // Check loading state
+            const isLoading = loadingImages[meal.id] || false;
 
             return (
               <Col xs={24} sm={12} md={8} lg={6} key={meal.id}>
@@ -89,19 +78,43 @@ const MealList = () => {
                   title={meal.name}
                   cover={
                     isLoading ? (
-                      // Display loading indicator while image is being fetched
-                      <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      >
                         <div className="loader">Loading...</div>
                       </div>
                     ) : imageUrl ? (
-                      <img alt={meal.name} src={imageUrl} style={{ width: "100%", height: "200px", objectFit: "cover" }} />
+                      <img
+                        alt={meal.name}
+                        src={imageUrl}
+                        style={{
+                          width: "100%",
+                          height: "200px",
+                          objectFit: "cover",
+                        }}
+                      />
                     ) : (
-                      // Display placeholder image if image retrieval fails
-                      <img alt="Placeholder" src="path/to/placeholder.jpg" style={{ width: "100%", height: "200px", objectFit: "cover" }} />
+                      <img
+                        alt="Placeholder"
+                        src="path/to/placeholder.jpg"
+                        style={{
+                          width: "100%",
+                          height: "200px",
+                          objectFit: "cover",
+                        }}
+                      />
                     )
                   }
                   actions={[
-                    <Button type="primary" style={{ backgroundColor: "#F56A00", color: "white" }} onClick={() => addToCart(meal)}>
+                    <Button
+                      type="primary"
+                      style={{ backgroundColor: "#F56A00", color: "white" }}
+                      onClick={() => addToCart(meal)}
+                    >
                       Add to Cart
                     </Button>,
                   ]}
@@ -111,7 +124,6 @@ const MealList = () => {
                     description={
                       <div>
                         <p style={{ margin: 0 }}>{meal.price}</p>
-                        {/* Display additional details if available in the API response */}
                         {meal.description && <p>{meal.description}</p>}
                       </div>
                     }
