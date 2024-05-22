@@ -32,7 +32,6 @@ const ManageItems = () => {
   const [visible, setVisible] = useState(false);
   const [form] = Form.useForm();
   const [editingItem, setEditingItem] = useState(null);
-  const [loading, setLoading] = useState(false);
 
   const beforeUpload = (file) => {
     if (file.type !== "image/jpeg" && file.type !== "image/png") {
@@ -58,7 +57,6 @@ const ManageItems = () => {
   }, []);
 
   const fetchItems = async () => {
-    setLoading(true);
     try {
       const response = await axios.get("https://eato.onrender.com/item");
       const responseData = response.data.data;
@@ -74,7 +72,7 @@ const ManageItems = () => {
 
   const handleCreate = async (values) => {
     try {
-     
+      // debugger;
       const response = await axios.post(
         "https://eato.onrender.com/item",
         {
