@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { Badge, Button, Drawer, Table, message } from "antd";
-
+import axios from "axios";
 
 const AppCart = () => {
   const [cartDrawerOpen, setCartDrawerOpen] = useState(false);
@@ -18,10 +18,25 @@ const AppCart = () => {
       0
     );
   };
-  const onConfirmOrder = (values) => {
-    console.log({ values });
-    setCartDrawerOpen(false);
-    message.success("Your order has been placed successfully.");
+
+  const onConfirmOrder = async () => {
+    const total = calculateTotal();
+
+    try {
+      const response = await axios.post("http://localhost:3000/meal", { total });
+
+      if (response.status !== 200) {
+        throw new Error("Network response was not ok");
+      }
+
+      console.log("Order placed:", response.data);
+
+      setCartDrawerOpen(false);
+      message.success("Your order has been placed successfully.");
+    } catch (error) {
+      console.error("Failed to place order:", error);
+      message.error("Failed to place order. Please try again.");
+    }
   };
 
   const handleDelete = (id) => {
@@ -73,7 +88,8 @@ const AppCart = () => {
           pagination={false}
           columns={columns}
           dataSource={cartItems}
-          summary={(data) => {
+          rowKey="id"
+          summary={() => {
             const total = calculateTotal();
             return (
               <Table.Summary.Row>
