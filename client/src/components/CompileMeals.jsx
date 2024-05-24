@@ -26,18 +26,18 @@ const CompileMeals = () => {
     }
   };
 
-  const handleCreate = async (values) => {
-    try {
-      await axios.post("http://localhost:3000/meal", values);
-      message.success("Meal created successfully!");
-      setVisible(false);
-      form.resetFields();
-      fetchMeals();
-    } catch (error) {
-      console.error("Error creating meal:", error);
-      message.error("Failed to create meal.");
-    }
-  };
+  // const handleCreate = async (values) => {
+  //   try {
+  //     await axios.post("http://localhost:3000/meal", values);
+  //     message.success("Meal created successfully!");
+  //     setVisible(false);
+  //     form.resetFields();
+  //     fetchMeals();
+  //   } catch (error) {
+  //     console.error("Error creating meal:", error);
+  //     message.error("Failed to create meal.");
+  //   }
+  // };
 
   const columns = [
     { title: "ID", dataIndex: "id", key: "id" },
@@ -47,13 +47,13 @@ const CompileMeals = () => {
 
   return (
     <div>
-      <Button
+      {/* <Button
         className="button"
         type="primary"
         onClick={() => setVisible(true)}
       >
         Create Meal
-      </Button>
+      </Button> */}
       <Table dataSource={meals} columns={columns} rowKey="id" />
 
       <Modal
@@ -69,7 +69,7 @@ const CompileMeals = () => {
           </Button>,
         ]}
       >
-        <Form form={form} onFinish={handleCreate}>
+        <Form form={form} >
           <Form.Item
             label="Token"
             name="token"

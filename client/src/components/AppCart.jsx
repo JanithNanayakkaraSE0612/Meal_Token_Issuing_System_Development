@@ -8,8 +8,13 @@ const AppCart = () => {
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
-    const storedCartData = JSON.parse(localStorage.getItem("cartData"));
-    setCartItems(storedCartData || []);
+    try {
+      const storedCartData = JSON.parse(localStorage.getItem("cartData"));
+      setCartItems(storedCartData || []);
+    } catch (error) {
+      console.error("Failed to parse cart data from local storage:", error);
+      setCartItems([]);
+    }
   }, []);
 
   const calculateTotal = () => {
@@ -35,7 +40,13 @@ const AppCart = () => {
       message.success("Your order has been placed successfully.");
     } catch (error) {
       console.error("Failed to place order:", error);
-      message.error("Failed to place order. Please try again.");
+      if (error.response) {
+        message.error(`Failed to place order: ${error.response.data.message}`);
+      } else if (error.request) {
+        message.error("No response received from server. Please check your network.");
+      } else {
+        message.error("Failed to place order. Please try again.");
+      }
     }
   };
 
