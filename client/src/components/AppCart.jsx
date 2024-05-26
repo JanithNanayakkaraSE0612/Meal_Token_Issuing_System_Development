@@ -28,7 +28,20 @@ const AppCart = () => {
     const total = calculateTotal();
 
     try {
-      const response = await axios.post("https://eato.onrender.com/meal", { total });
+      const payload = {
+        totalPrice: total,  // Ensure totalPrice is a number
+        items: cartItems.map(item => ({
+          id: item.id,
+          name: item.name,
+          price: parseFloat(item.price).toFixed(2),  // Ensure price is a string formatted to 2 decimal places
+        })),
+      };
+
+      const response = await axios.post("https://eato.onrender.com/meal", payload, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
 
       if (response.status !== 200) {
         throw new Error("Network response was not ok");
@@ -41,10 +54,13 @@ const AppCart = () => {
     } catch (error) {
       console.error("Failed to place order:", error);
       if (error.response) {
-        message.error(`Failed to place order: ${error.response.data.message}`);
+        console.error("Error response data:", error.response.data);
+        message.error(`Failed to place order: ${error.response.data.message || error.response.statusText}`);
       } else if (error.request) {
+        console.error("Error request data:", error.request);
         message.error("No response received from server. Please check your network.");
       } else {
+        console.error("Error message:", error.message);
         message.error("Failed to place order. Please try again.");
       }
     }
