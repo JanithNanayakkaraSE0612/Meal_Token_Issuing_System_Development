@@ -28,7 +28,7 @@ const AppCart = () => {
     const total = calculateTotal();
 
     try {
-      const response = await axios.post("http://localhost:3000/meal", { total });
+      const response = await axios.post("https://eato.onrender.com/meal", { total });
 
       if (response.status !== 200) {
         throw new Error("Network response was not ok");
