@@ -81,7 +81,29 @@ function Dashboard() {
       title: { display: true, text: "Order Revenue" },
     },
   };
+  const columns = [
+    { title: "ID", dataIndex: "id", key: "id" },
+    { title: "Token", dataIndex: "token", key: "token" },
+    { title: "Total Price", dataIndex: "totalPrice", key: "totalPrice" },
+  ];
+  const [meals, setMeals] = useState([]);
+  useEffect(() => {
+    fetchMeals();
+  }, []);
 
+  const fetchMeals = async () => {
+    try {
+      const response = await axios.get("https://eato.onrender.com/meal");
+      const responseData = response.data.data;
+      if (Array.isArray(responseData)) {
+        setMeals(responseData);
+      } else {
+        console.error("Data received is not an array:", responseData);
+      }
+    } catch (error) {
+      console.error("Error fetching items:", error);
+    }
+  };
   return (
     <Space size={20} direction="vertical" style={{ width: "100%" }}>
       <Typography.Title level={4}>Dashboard</Typography.Title>
@@ -111,14 +133,11 @@ function Dashboard() {
       <Flex wrap="wrap" gap="large">
         <Table
           style={{ width: "40%" }}
-          columns={[
-            { title: "Title", dataIndex: "title" },
-            { title: "Quantity", dataIndex: "quantity" },
-            { title: "Price", dataIndex: "discountedPrice" },
-          ]}
+          columns={columns}
           loading={loading}
-          dataSource={dataSource}
+          dataSource={meals}
           pagination={false}
+          rowKey="id"
         />
         <Card style={{ width: "40%" }}>
           <Bar options={options} data={reveneuData} />
