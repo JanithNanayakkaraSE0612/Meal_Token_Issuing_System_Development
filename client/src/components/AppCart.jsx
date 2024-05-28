@@ -43,7 +43,7 @@ const AppCart = () => {
         },
       });
 
-      if (response.status !== 200) {
+      if (response.status !== 200 ) {
         throw new Error("Network response was not ok");
       }
 
