@@ -158,6 +158,25 @@ const ManageEmployee = () => {
     return e?.fileList;
   };
 
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`https://eato.onrender.com/employee/${id}`);
+      message.success("Employee deleted successfully!");
+      fetchEmployees();
+    } catch (error) {
+      console.error("Error deleting employee:", error);
+      message.error("Failed to delete employee.");
+    }
+  };
+
+  const validateNIC = (_, value) => {
+    const nicPattern = /^\d{9}V$/;
+    if (!value || nicPattern.test(value)) {
+      return Promise.resolve();
+    }
+    return Promise.reject(new Error("NIC must be 12 digits followed by 'V'."));
+  };
+
   const columns = [
     { title: "ID", dataIndex: "id", key: "id" },
     { title: "Title", dataIndex: "title", key: "title" },
@@ -181,17 +200,6 @@ const ManageEmployee = () => {
       ),
     },
   ];
-
-  const handleDelete = async (id) => {
-    try {
-      await axios.delete(`https://eato.onrender.com/employee/${id}`);
-      message.success("Employee deleted successfully!");
-      fetchEmployees();
-    } catch (error) {
-      console.error("Error deleting employee:", error);
-      message.error("Failed to delete employee.");
-    }
-  };
 
   return (
     <div>
@@ -272,7 +280,10 @@ const ManageEmployee = () => {
           <Form.Item
             label="NIC"
             name="nic"
-            rules={[{ required: true, message: "Please enter the NIC!" }]}
+            rules={[
+              { required: true, message: "Please enter the NIC!" },
+              { validator: validateNIC },
+            ]}
           >
             <Input />
           </Form.Item>
@@ -287,19 +298,18 @@ const ManageEmployee = () => {
             </Select>
           </Form.Item>
           <Form.Item
-            label="Upload"
+            label="Profile Picture"
             name="upload"
             valuePropName="fileList"
             getValueFromEvent={normFile}
+            extra="Upload Profile Picture (JPG/PNG)"
           >
             <Upload
-              action="/upload.do"
-              listType="picture-card"
+              name="logo"
+              listType="picture"
               beforeUpload={beforeUpload}
             >
-              <Button>
-                <PlusOutlined /> Upload
-              </Button>
+              <Button icon={<PlusOutlined />}>Click to upload</Button>
             </Upload>
           </Form.Item>
         </Form>
