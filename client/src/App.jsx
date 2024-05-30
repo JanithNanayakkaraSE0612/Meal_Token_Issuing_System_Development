@@ -61,6 +61,7 @@ const App = () => {
             { label: <Link to={"/manageItems"}>{"ManageItems"}</Link> },
             { label: <Link to={"/CompileMeals"}>{"PlaceOrder"}</Link> },
             { label: <Link to={"/mealList"}>{"MealList"}</Link> },
+            { label: <Link to={"/manageEmployee"}>{"ManageEmployee"}</Link>}
           ]}
         ></Menu>
       </Sider>
