@@ -72,31 +72,27 @@ const ManageEmployee = () => {
   };
 
   const handleCreate = async (values) => {
+    const payload = {
+      title: values.title,
+      name: values.name,
+      mobileNumber: values.mobileNumber,
+      address: values.address,
+      nic: values.nic,
+      status: values.status.toUpperCase(),
+      profilePicture: values.upload[0]?.url, // Ensure the profile picture URL is included
+    };
+    console.log("Payload for create:", payload);
     try {
-      const response = await axios.post(
-        "https://eato.onrender.com/employee",
-        {
-          title: values.title,
-          name: values.name,
-          mobileNumber: values.mobileNumber,
-          address: values.address,
-          nic: values.nic,
-          status: values.status,
-          profilePicture: values.upload[0].ref,
-        },
-        {
-          validateStatus: (status) => status >= 200 || status < 400,
-        }
-      );
+      const response = await axios.post("https://eato.onrender.com/employee", payload, {
+        validateStatus: (status) => status >= 200 || status < 400,
+      });
       message.success("Employee created successfully!");
       setVisible(false);
       form.resetFields();
       fetchEmployees();
     } catch (error) {
       console.error("Error creating employee:", error);
-      message.error(
-        "Failed to create employee. Please check the data and try again."
-      );
+      message.error("Failed to create employee. Please check the data and try again.");
     }
   };
 
@@ -123,17 +119,18 @@ const ManageEmployee = () => {
 
   const handleUpdate = async (values) => {
     try {
+      const payload = {
+        title: values.title,
+        name: values.name,
+        mobileNumber: values.mobileNumber,
+        address: values.address,
+        nic: values.nic,
+        status: values.status.toUpperCase(),
+        profilePicture: values.upload[0]?.url, // Ensure the profile picture URL is included
+      };
       const response = await axios.put(
         `https://eato.onrender.com/employee/${editingEmployee.id}`,
-        {
-          title: values.title,
-          name: values.name,
-          mobileNumber: values.mobileNumber,
-          address: values.address,
-          nic: values.nic,
-          status: values.status,
-          profilePicture: values.upload[0].ref,
-        }
+        payload
       );
       if (response.status === 200) {
         message.success("Employee updated successfully!");
@@ -174,7 +171,15 @@ const ManageEmployee = () => {
     if (!value || nicPattern.test(value)) {
       return Promise.resolve();
     }
-    return Promise.reject(new Error("NIC must be 12 digits followed by 'V'."));
+    return Promise.reject(new Error("NIC must be 9 digits followed by 'V'."));
+  };
+
+  const validateMobileNumber = (_, value) => {
+    const mobilePattern = /^\d{10}$/; // Assuming mobile number should be 10 digits
+    if (!value || mobilePattern.test(value)) {
+      return Promise.resolve();
+    }
+    return Promise.reject(new Error("Mobile number must be a valid 10-digit number."));
   };
 
   const columns = [
@@ -230,12 +235,15 @@ const ManageEmployee = () => {
             key="submit"
             type="primary"
             onClick={async () => {
-              if (editingEmployee) {
+              try {
                 const data = await form.validateFields();
-                handleUpdate(data);
-              } else {
-                const data = await form.validateFields();
-                handleCreate(data);
+                if (editingEmployee) {
+                  await handleUpdate(data);
+                } else {
+                  await handleCreate(data);
+                }
+              } catch (error) {
+                console.error("Validation failed:", error);
               }
             }}
           >
@@ -266,6 +274,7 @@ const ManageEmployee = () => {
             name="mobileNumber"
             rules={[
               { required: true, message: "Please enter the mobile number!" },
+              { validator: validateMobileNumber },
             ]}
           >
             <Input />
@@ -293,8 +302,8 @@ const ManageEmployee = () => {
             rules={[{ required: true, message: "Please select the status!" }]}
           >
             <Select>
-              <Select.Option value="Active">Active</Select.Option>
-              <Select.Option value="Inactive">Inactive</Select.Option>
+              <Select.Option value="ACTIVE">Active</Select.Option>
+              <Select.Option value="INACTIVE">Inactive</Select.Option>
             </Select>
           </Form.Item>
           <Form.Item
